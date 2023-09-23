@@ -1,0 +1,154 @@
+ sabse pehle frontend and backend folder
+fhir backend mei :- server.js and app.js banayi
+terminal mei npm init aur entry point diya backend/server.js
+terminal mei npm i express mongoose dotenv
+
+server.js mei app naam ka server banaya aur export kita
+app.js mei server banaya 
+
+backend mei config naam ka folder ke ander config rakha
+
+ab config.dotenv ko connect krne ke liye dotenv kiya syntax iss:- dotenv ke variable ko use krne ke lite
+const dotenv = require('dotenv')
+//config:
+dotenv.config({path:"backend/config/config.env"})
+
+uske badd npm i nodemon 
+nodemon:-  Nodemon is a tool that helps in automatic monitoring of changes in your Node.js application and restarting the server automatically when changes are detected. Here are some of the benefits of using nodemon:
+
+pacjage.json mei script mei 
+"start":"node backend/server.js",
+    "dev":"nodemon backend/server.js"
+
+    iske baad controller aur routes
+
+    controller mei product.controller(rest api CRUD )
+
+    fhir router banaya :
+    const express = require('express')
+    const router = express.Router()
+    router.route("./products").get(getAllProducts)
+
+
+    uske baad route ko import kita app.js mer
+   app,js mei middleware add kita app.use(express.json())//ye saate json data ko object bana dega
+
+   route ko import kita 
+   app.use("/api/v1",product)
+
+
+uske baad database connect kiya 
+mongoose ka connection likkha aur usmei mongodb atlas mei sign in krke connect for vs code likhke pass:ripperpubg1234 daalo
+
+
+uske baad model folder banaya aur product schema banaya
+   
+uske baad controller banaye aur routes banaye
+
+
+aur jiska url same ho usmei router.route lagega
+
+
+errror handle kr lena bhyiii
+
+
+iske baad saare error handle kiye 
+utile mer error handler banaya uske middlewate banaya aur server.js mei use kiya
+
+uske baad maine server.js mei error handle kiye
+
+query means jo url mei ? ke aage likha ho
+
+mongodb query :-
+db.monthlyBudget.find( { $expr: { $gt: [ "$spent" , "$budget" ] } } ) => aise row jisme spent budget se jyada hoga
+   name : {
+                $regex : this.query.str,
+                $options : i
+            }
+        } : {}
+
+ uske baad filter search pagination jaise feature banate hai
+
+ uske baad user authentication       
+ npm i bcryptjs jsonwebtoken validator nodemailer cookie-parser body-parser 
+
+ bcypt :- password to encryption ke form mei
+ jsonwebtoken :- user authentication ke liye
+ validator :- valid emailke liye
+ nodemailer :- password reset wagera
+ cookie-parser :- webtoken se realteds
+
+ uske baad user moduller controller aur roures banaye
+
+ auth middleware ko router se pehle use mat krna
+
+ uske baaad cookiw aur jsonwebtoken sab use kiua
+
+ uske baad pura authentication wagera kiya
+
+ uske baad aur features of user ke jaise uska password get krna ya profile pic dekhna change krna
+
+ uske baad review ka handle kiya
+
+ ab order ka model wagera pura banaya 
+
+ FRONTEND START:-
+run : cd frontend
+run :- npx create-react-app .
+run :- npm i axios react-helmet 
+npm i react-redux redux redux redux-thunk redux-devtools-extension react-router-dom overlay-navbar
+uske basd src mei bss app.css app.js and index.js rakha
+
+components mei layout mei header iske overlay navbar
+npm install react-icons , npm i webfontloader
+aur fhir overlay navabar ke liye copy kiya
+
+uske badd layiut uske baad Home 
+npm i react-rating-stars-component for rating
+
+home banao
+
+uske baad metaData for title
+
+
+REDUX:_
+sabse pehle store banao 
+store mei immport kro :-
+import {legacy_createStore as createStore , combineReducers , applyMiddleware} from "redux"
+import thunk from "redux-thunk"
+import {composeWithDevTools} from "redux-devtools-extension" //devtool extension ke liyes
+store banaya uske baad index .js mei jaake provider
+import {Provider} from './react-redux'
+
+reducer mei initail state and action
+action mei ek function aur uske andr callbaack function
+dispatch mei type and payload
+ek clear error ka bhi banana 
+
+since mere frontend and backend dono alg port pe hai 
+to frontend ke package.json mei daalna proxy
+ "proxy" : "http://192.168.4.53:9050" // port dedo backend ka 
+
+ link to se url ke aage kya aaeaga wo control ho skta hai
+
+ loader bhi banaya
+
+ uske baad productDEtails PRoduct/component
+ action or reducer wagera banaya
+ product Details meri images ke slide ke liye carausel
+ for carousel (react materail ui caraousel):-
+ 
+ npm install react-material-ui-carousel --save
+
+
+const navigate = useNavigate()
+navigate("/search)
+ek agr mujhe upar se kuch chaiye hoga to i will use useParams()
+kisi ko click mei link mei bhejna hai to 
+<button><Link to = "/search">Search</Link></Button>
+
+
+how to pust in Git 
+1:-) git add .
+2:-) git commit -m "Sell a project"
+3:-)  git push origin main 
