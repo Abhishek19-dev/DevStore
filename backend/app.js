@@ -22,6 +22,7 @@ const product = require('./routes/productRoute')
 const user = require('./routes/userRoute')
 const order = require("./routes/orderRoute")
 const project = require("./routes/projectRoute")
+const chat = require("./routes/chatRoute")
 
 
 
@@ -29,6 +30,7 @@ app.use("/api/v1",product.router)
 app.use("/api/v1/",user.router)
 app.use("/api/v1/",order.router)
 app.use("/api/v1/",project.router)
+app.use("/api/v1/",chat.router)
 
 
 

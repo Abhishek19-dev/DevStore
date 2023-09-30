@@ -15,7 +15,7 @@ exports.registerUser = catchasyncerror(async(req,res,next)=>{
 
     const {name , email , password} = req.body;
     const file = req.file
-//   console.log("file",file)
+  console.log("file",file)
     // console.log(file)
     const fileUri = getDataUri(file)
  
