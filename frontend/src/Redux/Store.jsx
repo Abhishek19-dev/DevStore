@@ -2,7 +2,7 @@ import { legacy_createStore as createStore ,combineReducers , applyMiddleware} f
 import thunk from "redux-thunk"
 import {composeWithDevTools} from "redux-devtools-extension"
 import {addReviewReducer, buyProjectReducer, deleteProjectUserReducer, editProjectReducer, getAllReviewsReducer,  getMyProjectsReducer, projectDetailsReducer, projectReducer, sellProjectReducer } from "./Reducer/ProjectReducer"
-import { loginReducer, logoutReducer, registerReducer } from "./Reducer/AuthReducer"
+import { forgetPasswordReducer, loginReducer, logoutReducer, otpVerificationReducer, registerReducer, resetPasswordReducer } from "./Reducer/AuthReducer"
 import { editProfileReducer, getUserDetailsReducer, updatePasswordReducer } from "./Reducer/UserReducer"
 
 const reducer = combineReducers({
@@ -11,6 +11,9 @@ const reducer = combineReducers({
     loginAuth : loginReducer,
     logoutAuth : logoutReducer,
     registerAuth : registerReducer,
+    otpVerfication:otpVerificationReducer,
+    forgetPassword:forgetPasswordReducer,
+    resetPassword:resetPasswordReducer,
     getAllReviews : getAllReviewsReducer,
     addReview : addReviewReducer,
     editProfile:editProfileReducer,

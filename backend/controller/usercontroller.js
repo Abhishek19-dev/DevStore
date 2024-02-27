@@ -3,20 +3,25 @@ const catchasyncerror = require("../middleware/catchasyncerror")
 
 const User = require('../model/usermodel');
 const sendToken = require("../utils/jwtToken");
-const {sendEmail , buyProjectMail} = require("../utils/sendEmail.js")
+const {sendEmail , buyProjectMail, otpRegisterMail} = require("../utils/sendEmail.js")
 
 const crypto = require('crypto');
 const { getDataUri } = require("../utils/dataUrl");
 
 const cloudinary = require('cloudinary').v2
+
+const ejs = require('ejs');
+const path = require('path');
+const fs = require('fs');
+
 //Register a User:-
 exports.registerUser = catchasyncerror(async(req,res,next)=>{
 
-
     const {name , email , password} = req.body;
+
+
+    console.log("name email password",name,email,password)
     const file = req.file
-  console.log("file",file)
-    // console.log(file)
     const fileUri = getDataUri(file)
  
     const myCloud = await cloudinary.uploader.upload(fileUri.content,{
@@ -35,14 +40,133 @@ exports.registerUser = catchasyncerror(async(req,res,next)=>{
             //  url : "ProfilePioUrl",
          }
     })
-    // const token = user.getJWTToken();
-    // res.status(200).json({
-    //     success : true,
-    //     token
-    // })
-    sendToken(user , 200 , res)
+    //otp verfication
+    const otp = await user.generateOTP()
+    const emailTemplatePath = path.join(__dirname, 'otpVerfication.html');
+    const emailTemplate = fs.readFileSync(emailTemplatePath, 'utf-8');
+    
+    const renderedTemplate = ejs.render(emailTemplate, { otp: otp });
+
+    try {
+        
+        await otpRegisterMail({
+            email : email,
+            subject : `Email Verfication - DevStore`,
+            message : renderedTemplate
+           })
+           await user.save({validateBeforeSave:false})
+           res.status(200).json({
+            user:user,
+            success : true ,
+            message : "Otp has been sent to this email , Please Verify"
+        })
+    } catch (error) {
+        // user.otpVerfication = undefined;
+        // user.otpVerficationExpire = undefined;
+        // await user.save({validateBeforeSave:false})
+        return (next(new ErrorHandler(error.message),500))
+    }
 })
 
+// Confirm otp verification:-
+exports.confirmOtpVerification = catchasyncerror(async(req,res,next)=>{
+    const {email , otp} = req.body
+    const user = await User.findOne({"email":email}).select("+otpVerfication +otpVerficationExpire")
+
+    const enteredOtp = parseInt(otp);
+
+    if(!user){
+        return (next(new ErrorHandler("Invalid email! User not found",401)));
+    }
+    if(!otp){
+        return (next(new ErrorHandler("Please enter valid OTP",401)));
+    }
+
+    if(user.otpVerfication === enteredOtp && new Date(user.otpVerficationExpire) > Date.now()) // Access user properties with user.
+    {
+        await user.save();
+        res.status(200).json({
+          success:true,
+          message:"User Registered Successfully"
+        })
+    }
+    console.log("user" , user)
+    console.log("user.otpVerification",user.otpVerfication === enteredOtp)
+    console.log("user.otpVerification",typeof(user.otpVerfication) , typeof(enteredOtp))
+    console.log("user.otpVerificationExpire",user.otpVerficationExpire < Date.now())
+
+
+    if(user.otpVerfication !== enteredOtp){
+        return (next(new ErrorHandler("Invalid OTP !",401)));
+    }
+    if(user.otpVerficationExpire < Date.now()){
+        return (next(new ErrorHandler("OTP Expired !",401)));
+    }
+});
+
+
+// Registration controller
+// exports.registerUser = catchasyncerror(async (req, res, next) => {
+//     const { name, email, password } = req.body;
+//     const file = req.file;
+//     const fileUri = getDataUri(file);
+
+//     // Upload file to cloudinary
+//     const myCloud = await cloudinary.uploader.upload(fileUri.content, {
+//         folder: "avatars",
+//         width: 150,
+//         crop: "scale"
+//     });
+
+//     // Generate OTP
+//     const user = new User({ name, email, password });
+//     user.avatar = {
+//         public_id: myCloud.public_id,
+//         url: myCloud.secure_url
+//     };
+
+//     const otp = user.generateOTP();
+    
+//     // Send OTP
+//     const emailTemplatePath = path.join(__dirname, 'otpVerification.html');
+//     const emailTemplate = fs.readFileSync(emailTemplatePath, 'utf-8');
+//     const renderedTemplate = ejs.render(emailTemplate, { otp });
+//     await otpRegisterMail({
+//         email: email,
+//         subject: `Email Verification - DevStore`,
+//         message: renderedTemplate
+//     });
+
+//     // Send response with success message
+//     res.status(200).json({
+//         success: true,
+//         message: "OTP has been sent to this email, Please Verify"
+//     });
+// });
+
+// OTP verification controller
+// exports.confirmOtpVerification = catchasyncerror(async (req, res, next) => {
+//     const { email, otp } = req.body;
+
+//     // Find user by email
+//     const user = await User.findOne({ email }).select("+otpVerfication +otpVerficationExpire");
+//     if (!user) {
+//         return next(new ErrorHandler("Invalid email! User not found", 401));
+//     }
+
+//     // Check if OTP is correct and not expired
+//     const enteredOtp = parseInt(otp);
+//     if (user.otpVerfication === enteredOtp && user.otpVerficationExpire > Date.now()) {
+//         // Create user if OTP is correct and not expired
+//         await user.save();
+//         res.status(200).json({
+//             success: true,
+//             message: "User Registered Successfully"
+//         });
+//     } else {
+//         return next(new ErrorHandler("Invalid OTP or OTP expired", 401));
+//     }
+// });
 
 //Login User:-
 exports.loginUser = catchasyncerror(async(req,res,next)=>{
@@ -109,7 +233,11 @@ exports.forgotPassword = catchasyncerror(async(req,res,next)=>{
 
    //mail ke through link bhejna
 //    const resetPasswordUrl = `http://localhost/api/v1/password/reset/${resetToken}`//kya pta host aur http kya hai
-   const resetPasswordUrl = `${req.protocol}://${req.get("host")}/api/v1/password/reset/${resetToken}`
+
+console.log("host is ",req.get("host"))
+//    const resetPasswordUrl = `${req.protocol}://${req.get("host")}/api/v1/password/reset/${resetToken}`
+   const resetPasswordUrl = `http://localhost:3000/password/reset/${resetToken}`
+//    const resetPasswordUrl = `${req.protocol}://http://localhost:3000/api/v1/password/reset/${resetToken}`
 
     const message = `Your Password reset Token is :- \n ${resetPasswordUrl} \n\n If you have not requested this email , Please ignore this`;
 

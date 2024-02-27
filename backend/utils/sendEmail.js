@@ -5,7 +5,8 @@ const sendEmail = async(options)=>{
    
     const SMPT_SERVICE = "gmail"
     const SMPT_MAIL = "ecommercnodemailer170@gmail.com"
-    const SMPT_PASSWORD = "ascmczbawelkexec"
+    // const SMPT_MAIL = "abhishekpadiyar6395@gmail.com"
+    const SMPT_PASSWORD = "xbcl flmq vzkf ezcv"
     const SMPT_HOST = "smpt.gmail.com"
     const SMPT_PORT = 465
 
@@ -36,7 +37,7 @@ const buyProjectMail = async(options)=>{
     const SMPT_SERVICE = "gmail"
     // const SMPT_MAIL = "ecommercnodemailer170@gmail.com"
     const SMPT_MAIL = options.buyerEmail
-    const SMPT_PASSWORD = "ascmczbawelkexec"
+    const SMPT_PASSWORD = "xbcl flmq vzkf ezcv"
     const SMPT_HOST = "smpt.gmail.com"
     const SMPT_PORT = 465
 
@@ -60,6 +61,37 @@ const buyProjectMail = async(options)=>{
       await transporter.sendMail(mailOptions)
 }
 
+const otpRegisterMail = async(options)=>{
+   
+    const SMPT_SERVICE = "gmail"
+    const SMPT_MAIL = "ecommercnodemailer170@gmail.com"
+    // const SMPT_MAIL = "abhishekpadiyar6395@gmail.com"
+    const SMPT_PASSWORD = "xbcl flmq vzkf ezcv"
+    const SMPT_HOST = "smpt.gmail.com"
+    const SMPT_PORT = 465
+
+    const transporter = nodeMailer.createTransport({
+        host : SMPT_HOST,
+        port : SMPT_PORT,
+        service: SMPT_SERVICE,
+        auth:{
+            user : SMPT_MAIL,
+            pass :SMPT_PASSWORD
+        }
+    })
+
+    const mailOptions = {
+        from : SMPT_MAIL,
+        to : options.email,
+        subject : options.subject,
+        html : options.message
+    }
+
+    await transporter.sendMail(mailOptions)
+}
+
+
 
 module.exports = {sendEmail,
-    buyProjectMail:buyProjectMail}
+    buyProjectMail:buyProjectMail ,
+otpRegisterMail : otpRegisterMail}

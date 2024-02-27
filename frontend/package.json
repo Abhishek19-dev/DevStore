@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.11.1",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@headlessui/react": "^1.7.16",
     "@heroicons/react": "^2.0.18",
@@ -13,11 +14,16 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
     "crypto-browserify": "^3.12.0",
+    "framer-motion": "^11.0.6",
     "hamburger-react": "^2.5.0",
+    "lucide-react": "^0.341.0",
     "material-icons": "^1.13.10",
     "moment": "^2.29.4",
     "react": "^18.2.0",
+    "react-countdown-circle-timer": "^3.2.1",
     "react-dom": "^18.2.0",
     "react-rating-stars-component": "^2.2.0",
     "react-redux": "^8.1.1",
@@ -28,7 +34,10 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2",
     "sass": "^1.66.1",
+    "tailwind-merge": "^2.2.1",
+    "tailwind-toast": "^1.1.0",
     "tailwindcss": "^3.3.3",
+    "tailwindcss-animate": "^1.0.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -55,5 +64,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://192.168.210.53:9050"
+  "proxy": "http://192.168.31.53:9050"
 }

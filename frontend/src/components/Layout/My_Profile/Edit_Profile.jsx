@@ -116,7 +116,7 @@ const EditProfile = () => {
               <div class="flex  p-4">
                 <div>
                   <img
-                    src={avatar.url}
+                    src={avatar ? avatar.url : ""}
                     alt="profile Pic"
                     className="w-[28vh] h-[28vh] rounded-md mr-4"
                   />

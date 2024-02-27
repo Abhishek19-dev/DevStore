@@ -15,6 +15,9 @@ import EditProjectDetails from './components/Screen/MyProject/EditProjectDetails
 import Buy from './components/Screen/Buy';
 import ThankYou from './components/Screen/ThankYou';
 import ScrollToTop from './components/ScrollToTop';
+import OtpScreen from './components/Screen/Auth/OtpScreen';
+import ForgetPassword from './components/Screen/Auth/ForgetPassword';
+import ResetPassword from './components/Screen/Auth/ResetPassword';
 // import Getreviews from './components/Reviews';
 
 
@@ -28,6 +31,9 @@ function App() {
           <Route path="*" element= {<MainLayout /*navigate={navigate}*/ />} />
           <Route path="/login" element= {<Login />} />
           <Route path="/register" element= {<Register />} />
+          <Route path="/otp" element= {<OtpScreen />} />
+          <Route path="/forgetPassword" element= {<ForgetPassword />} />
+          <Route path="/password/reset/:token" element= {<ResetPassword />} />
         </Routes>
 
     </>

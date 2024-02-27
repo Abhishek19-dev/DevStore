@@ -40,15 +40,27 @@ const Login = () => {
 
   return (
     <>
-      <section class="bg-gradient-to-t from-slate-50 to-blue-100 h-full">
-        <div class="flex ">
-          <div class="w-1/2">
-            <div class="h-fit flex flex-col border  bg-white rounded-lg mt-[7vh] ml-[10vh]  py-9 ">
+      <section class="bg-gradient-to-t flex flex-col items-center from-slate-50 to-blue-100 h-full">
+      <div className="pt-[3rem]">
+          <p class="font-nunito  flex flex-col justify-between  h-[full] font-semibold text-lg p-[1rem]    text-black">
+            <span class="text-color7  ml-[5rem] md:ml-[20rem] lg:ml-[14rem] mb-[1.5rem]   font-nunito font-bold text-3xl md:text-5xl lg:text-7xl ">
+              DevStore
+              <br />
+            </span>
+            <span className="font-nunito py-1 lg:ml-0  text-2xl text-black font-normal">
+              - Create an account now and showcase your projects to a global
+              audience
+            </span>
+          </p>
+        </div>
+        <div class="flex lg:flex-row flex-col items-center">
+          <div class="lg:w-1/2 w-[90%]  pr-[1rem] md:pr-[2.5rem]">
+            <div class="h-fit flex flex-col border bg-white   rounded-lg  lg:ml-[10vh] ml-[1.5rem]  py-9 ">
               <h2 class="text-3xl font-nunito font-bold mb-4 text-center mt-2 ">
                 Login
               </h2>
               <form>
-                <div class="mb-4">
+                <div  class="mb-4">
                   <label class="ml-5 font-nunito font-semibold text-lg text-color6">
                     Email Address{" "}
                   </label>
@@ -58,7 +70,7 @@ const Login = () => {
                     type="email"
                     id="email"
                     placeholder="Enter your email"
-                    class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 w-[85vh] rounded-sm mx-4 my-2"
+                    class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 w-[85%] rounded-sm mx-4 my-2"
                   />
                 </div>
                 <div class="mb-4">
@@ -71,7 +83,7 @@ const Login = () => {
                     type="password"
                     id="password"
                     placeholder="Enter your password"
-                    class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[85vh] mx-4 my-2"
+                    class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[85%] mx-4 my-2"
                   />
                 </div>
                 <div
@@ -94,21 +106,20 @@ const Login = () => {
                     </svg>
                   </span>
                 </div>
-                <div class="flex justify-between mb-4">
+                <div class="flex  p-[1rem] justify-between mb-4">
                   <button
                     onClick={handleLoginButton}
-                    class="bg-color9 text-white font-nunito font-semibold py-2 px-8 rounded-lg mr-2 ml-8 "
+                    class="bg-color9 text-white font-nunito font-semibold mr-[2.5rem] px-8  lg:py-2 lg:px-8 rounded-lg  lg:mr-2 ml-1 md:ml-8 "
                   >
                     Login
                   </button>
                   <a
-                    href="#"
+                    href="/forgetPassword"
                     class="font-nunito font-semibold text-xl text-color6 mr-8 mt-2"
                   >
                     Forgot Password?
                   </a>
                 </div>
-                {/* <Link to = "/register"> */}
                 <p class="text-center my-4 text-black font-nunito font-semibold">
                   Not a user?{" "}
                   <a
@@ -118,22 +129,12 @@ const Login = () => {
                     Register
                   </a>
                 </p>
-                {/* </Link> */}
               </form>
             </div>
             
           </div>
-          <div class="w-1/2 flex  flex-col justify-center items-center">
-            <img src={loginGif} alt="Image" class="w-[70vh] h-[70vh]" />
-            <p class="font-nunito font-semibold text-lg  mt-4 text-black">
-              <span class="text-color7 font-nunito font-bold text-4xl ">
-                DevStore<br />
-              </span>
-              <span className="font-nunito py-1  text-md text-black font-normal">
-              - Create an account now and showcase your projects to a global
-              audience
-              </span>
-            </p>
+          <div class="lg:w-1/2 w-[100%] flex  flex-col justify-center items-center">
+            <img src={loginGif} alt="Image" class="w-[90%] h-[95%]" />
           </div>
           
         </div>

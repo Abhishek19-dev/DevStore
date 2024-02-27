@@ -25,6 +25,9 @@ import { useNavigate } from 'react-router-dom';
     const {isSent} = useSelector((state)=>state.buyProject)
 
 
+    console.log("project user and is sent",project,project.user,user)
+
+
     useEffect(()=>{
       if(isSent)
       {
@@ -40,20 +43,22 @@ import { useNavigate } from 'react-router-dom';
       },[user,navigate])
 
 
-    if(!project || !project.user || !user)
+    // if(!project || !project.user || !user)
+    if(!project || !user)
    {
     console.log("Inside conditional check");
     return null
    }
     
     const {email:buyerEmail} = user
-    const {email : sellerEmail} = project.user
+    // const {email : sellerEmail} = project.user
 
     const handleSendEmailButton = (e) =>{
       e.preventDefault()
       if(subject != "" && description != "")
       {
-        dispatch(buyProjectAction(buyerEmail,sellerEmail,subject,description))
+        // dispatch(buyProjectAction(buyerEmail,sellerEmail,subject,description))
+        dispatch(buyProjectAction(buyerEmail,subject,description))
       }
     }
     
@@ -132,6 +137,9 @@ return (
   </div>
   
 </div>
+
+
+<h1>helloe</h1>
    </>
 )
 };

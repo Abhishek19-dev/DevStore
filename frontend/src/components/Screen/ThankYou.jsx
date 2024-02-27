@@ -13,19 +13,19 @@ import { BUY_PROJECT_RESET } from '../../Redux/ActionType';
     const navigate = useNavigate()
     const {isSent} = useSelector((state)=>state.buyProject)
 
-    useEffect(()=>{
-        if(!isSent)
-        {
-            navigate("/")
-        }
-    },[isSent,navigate])
+    // useEffect(()=>{
+    //     if(!isSent)
+    //     {
+    //         navigate("/")
+    //     }
+    // },[isSent,navigate])
 
 
 
     const handleSentReset = ()=>{
-        dispatch({
-            type:BUY_PROJECT_RESET
-        })
+        // dispatch({
+        //     type:BUY_PROJECT_RESET
+        // })
     }
    
 return (
@@ -47,6 +47,7 @@ return (
   </div>
   
 </div>
+
     </>
 )
 };
