@@ -18,6 +18,7 @@ import ScrollToTop from './components/ScrollToTop';
 import OtpScreen from './components/Screen/Auth/OtpScreen';
 import ForgetPassword from './components/Screen/Auth/ForgetPassword';
 import ResetPassword from './components/Screen/Auth/ResetPassword';
+import { useState } from 'react';
 // import Getreviews from './components/Reviews';
 
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/register" element= {<Register />} />
           <Route path="/otp" element= {<OtpScreen />} />
           <Route path="/forgetPassword" element= {<ForgetPassword />} />
+          <Route path="/projects" element={<ProjectScreen />} />
           <Route path="/password/reset/:token" element= {<ResetPassword />} />
         </Routes>
 
@@ -42,14 +44,14 @@ function App() {
 
 function MainLayout() {
   // const routesWithNavBarFooter = ["/", "/projects", "/project/:id","/sell" , "/projectReviews/:id"];
-  const routesWithNavBarFooter = ["/", "/projects", "/project/:id","/sell","/myProfile","/myProjects","/editProject/:id","/buy","/thankYou"];
+  // const routesWithNavBarFooter = ["/", "/projects", "/project/:id","/sell","/myProfile","/myProjects","/editProject/:id","/buy","/thankYou"];
+  const routesWithNavBarFooter = ["/","/project/:id","/sell","/myProfile","/myProjects","/editProject/:id","/buy","/thankYou"];
 
   return (
     <>
      <NavBar />
       <Routes>
         <Route path="/" element={<Home  />} />
-        <Route path="/projects" element={<ProjectScreen />} />
         <Route path="/project/:id" element={<ProjectDetails />} />
         <Route path="/sell" element= {<Sell />} />
         <Route path="/myProfile" element= {<EditProfile />}/>

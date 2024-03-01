@@ -86,6 +86,7 @@ for (const dataUriSingle of dataUris) {
 exports.getAllProjects = catchasyncerror(async(req,res,next)=>{
 
     const noOfProjects = await Project.countDocuments()
+    console.log("req query",req.query)
     const apiFeatures  = new features(Project.find(),req.query).search()
     let projects = await apiFeatures.query
     let filteredProjectCount = await projects.length

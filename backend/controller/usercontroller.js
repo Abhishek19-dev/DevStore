@@ -71,6 +71,7 @@ exports.registerUser = catchasyncerror(async(req,res,next)=>{
 // Confirm otp verification:-
 exports.confirmOtpVerification = catchasyncerror(async(req,res,next)=>{
     const {email , otp} = req.body
+    console.log("email hai ye",email)
     const user = await User.findOne({"email":email}).select("+otpVerfication +otpVerficationExpire")
 
     const enteredOtp = parseInt(otp);
@@ -100,73 +101,11 @@ exports.confirmOtpVerification = catchasyncerror(async(req,res,next)=>{
         return (next(new ErrorHandler("Invalid OTP !",401)));
     }
     if(user.otpVerficationExpire < Date.now()){
-        return (next(new ErrorHandler("OTP Expired !",401)));
+        await user.remove();
+        return (next(new ErrorHandler("OTP Expired Please register Again !",401)));
     }
 });
 
-
-// Registration controller
-// exports.registerUser = catchasyncerror(async (req, res, next) => {
-//     const { name, email, password } = req.body;
-//     const file = req.file;
-//     const fileUri = getDataUri(file);
-
-//     // Upload file to cloudinary
-//     const myCloud = await cloudinary.uploader.upload(fileUri.content, {
-//         folder: "avatars",
-//         width: 150,
-//         crop: "scale"
-//     });
-
-//     // Generate OTP
-//     const user = new User({ name, email, password });
-//     user.avatar = {
-//         public_id: myCloud.public_id,
-//         url: myCloud.secure_url
-//     };
-
-//     const otp = user.generateOTP();
-    
-//     // Send OTP
-//     const emailTemplatePath = path.join(__dirname, 'otpVerification.html');
-//     const emailTemplate = fs.readFileSync(emailTemplatePath, 'utf-8');
-//     const renderedTemplate = ejs.render(emailTemplate, { otp });
-//     await otpRegisterMail({
-//         email: email,
-//         subject: `Email Verification - DevStore`,
-//         message: renderedTemplate
-//     });
-
-//     // Send response with success message
-//     res.status(200).json({
-//         success: true,
-//         message: "OTP has been sent to this email, Please Verify"
-//     });
-// });
-
-// OTP verification controller
-// exports.confirmOtpVerification = catchasyncerror(async (req, res, next) => {
-//     const { email, otp } = req.body;
-
-//     // Find user by email
-//     const user = await User.findOne({ email }).select("+otpVerfication +otpVerficationExpire");
-//     if (!user) {
-//         return next(new ErrorHandler("Invalid email! User not found", 401));
-//     }
-
-//     // Check if OTP is correct and not expired
-//     const enteredOtp = parseInt(otp);
-//     if (user.otpVerfication === enteredOtp && user.otpVerficationExpire > Date.now()) {
-//         // Create user if OTP is correct and not expired
-//         await user.save();
-//         res.status(200).json({
-//             success: true,
-//             message: "User Registered Successfully"
-//         });
-//     } else {
-//         return next(new ErrorHandler("Invalid OTP or OTP expired", 401));
-//     }
-// });
 
 //Login User:-
 exports.loginUser = catchasyncerror(async(req,res,next)=>{

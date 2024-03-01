@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetPasswordAction } from '../../../Redux/Actions/authAction';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
+import { RESET_PASSWORD_CHANGE } from '../../../Redux/ActionType';
  
  const ResetPassword = () =>{
 
@@ -11,28 +12,31 @@ import { useToast } from '@chakra-ui/react';
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const toast = useToast()
+    
+    const {loading : resetPasswordLoading , isReset , user:resetPasswordUser , error : resetPasswordError} = useSelector((state)=> state.resetPassword)
 
    const {token} = useParams()
     console.log("token " , token)
 
    const handleResetButton = ()=>{
+    dispatch({
+        type : RESET_PASSWORD_CHANGE
+    })
     dispatch(resetPasswordAction(password , confirmPassword , token))
    }
-
-
-    const {loading : resetPasswordLoading , isReset , user:resetPasswordUser , error : resetPasswordError} = useSelector((state)=> state.resetPassword)
 
     useEffect(()=>{
         if(isReset){
            navigate('/login')
-        }
-        toast({
+           toast({
             title: "Password Changes Successfull ! Please Login with new Password" ,
             status: "success",
             isClosable: true,
           });
+        }
     },[isReset])
 
+    console.log("reset Password error",resetPasswordError&& resetPasswordError , resetPasswordError&& resetPasswordError.length > 0)
 
     useEffect(()=>{
         if(resetPasswordError && resetPasswordError.length > 0){
@@ -48,7 +52,6 @@ import { useToast } from '@chakra-ui/react';
 return (
     <>
       <section class="bg-gradient-to-t flex flex-col lg:justify-around items-center w-full h-[100vh]   from-slate-50 to-blue-100 ">
-        {/* <section class="  w-[100%]  flex flex-col  h-[100vh]"> */}
         <div className="lg:pt-[3rem]">
           <p class="font-nunito  flex flex-col justify-between   h-[full] font-semibold text-lg p-[1rem]     text-black">
             <span class="text-color7  ml-[5rem] md:ml-[20rem] lg:ml-[14rem] mb-[1.5rem]   font-nunito font-bold text-3xl md:text-5xl lg:text-7xl ">
@@ -70,11 +73,11 @@ return (
             <div class="flex flex-col space-y-5">
                 <label for="password">
                     <p class="font-medium text-slate-700 pb-2">New Password</p>
-                    <input id="password" name="password" type="password" value={password} onChange={(e)=> setPassword(e.target.value)} class="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter email address" /> 
+                    <input id="password" name="password" type="password" value={password} onChange={(e)=> setPassword(e.target.value)} class="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter New Password" /> 
                 </label>
                 <label for="confirmPassword">
                     <p class="font-medium text-slate-700 pb-2">Confirm Password</p>
-                    <input id="confirmPassword" name="confirmPassword" type="text" value={confirmPassword} onChange={(e)=> setConfirmPassword(e.target.value)} class="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter email address" /> 
+                    <input id="confirmPassword" name="confirmPassword" type="text" value={confirmPassword} onChange={(e)=> setConfirmPassword(e.target.value)} class="w-full py-3 border border-slate-200 rounded-lg px-3 focus:outline-none focus:border-slate-500 hover:shadow" placeholder="Enter Confirm Password" /> 
                 </label>
                {
                 resetPasswordLoading? <button disabled="" type="button"  class="w-full py-3 font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg border-indigo-500 hover:shadow inline-flex space-x-2 items-center justify-center">
@@ -92,8 +95,8 @@ return (
                 </button>
                }
                 
-                <p class="text-center">Not registered yet? <a href="#" class="text-indigo-600 font-medium inline-flex space-x-1 items-center"><a href='/register'>
-                <span>Register now </span> </a><span><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <p class="text-center">Want New Token? <a href="#" class="text-indigo-600 font-medium inline-flex space-x-1 items-center"><a href='/forgetPassword'>
+                <span>Get New Token </span> </a><span><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg></span></a></p>
             </div>

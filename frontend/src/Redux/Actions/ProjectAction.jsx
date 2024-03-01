@@ -3,13 +3,16 @@ import axios from "axios";
 
 
 
-export const getAllProjects = (tags,languages,domain) => async(dispatch) =>{
+// export const getAllProjects = (tags,languages,domain) => async(dispatch) =>{
+export const getAllProjects = (reqString) => async(dispatch) =>{
+    console.log("inside req string ",reqString)
     try {
         
        dispatch({
            type:ALL_PROJECT_REQUEST,
        })
-      let link = `/api/v1/projects?languages=${languages}&domain=${domain}&tags=${tags}`
+    //   let link = `/api/v1/projects?languages=${languages}&domain=${domain}&tags=${tags}`
+      let link = `/api/v1/projects?${reqString}`
 
        const {data} = await axios.get(link)
 

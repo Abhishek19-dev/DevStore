@@ -95,8 +95,8 @@ export const logoutAction = () => async(dispatch)=>{
 
 
 //OTP Verification
-export const otpVerificationAction = (email,otp,password) => async(dispatch)=>{
-    console.log("email otp password",email,otp,password)
+export const otpVerificationAction = (email,otp) => async(dispatch)=>{
+    console.log(email)
     try {
         dispatch({
             type:OTP_VERIFICATION_REQUEST,
@@ -108,9 +108,6 @@ export const otpVerificationAction = (email,otp,password) => async(dispatch)=>{
             type:OTP_VERIFICATION_SUCCESS,
             payload:data.message
         })
-        // dispatch({
-        //     type:LOGIN_AFTER_OTPVERIFICATION
-        // })
 
     } catch (error) {
         dispatch({

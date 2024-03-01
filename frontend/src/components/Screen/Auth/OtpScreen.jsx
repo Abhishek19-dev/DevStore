@@ -58,17 +58,16 @@ const OtpScreen = () => {
             isClosable: true,
           })
     }
-  },[otpVerficationError])
+  },[])
 
   useEffect(()=>{
     if(isVerified){
-
         toast({
             title: "User Registered Successfully",
             status: "success",
             isClosable: true,
           })
-        navigate('/')
+        navigate('/login')
     }
   },[isVerified])
 

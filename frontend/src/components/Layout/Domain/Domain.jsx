@@ -5,6 +5,7 @@ import cplus from "../../../images/c++.png"
 import python from "../../../images/python.png"
 import java from "../../../images/java.png"
 import  javascript from "../../../images/java-script.png"
+import  reactJs from "../../../images/react.png"
 
 
 const Categories = () =>{
@@ -63,7 +64,7 @@ return (
      </div>
      {/* Category 4 */}
      <div class="bg-white rounded-lg p-4 border-color7 border-1 hover:scale-105 transition-transform">
-       <img src= {java} alt="Category 1" class="w-full h-52 object-cover mb-1 border-2 rounded-lg bg-gradient-to-t from-slate-50 to-blue-100" />
+       <img src= {reactJs} alt="Category 1" class="w-full h-52 object-cover mb-1 border-2 rounded-lg bg-gradient-to-t from-slate-50 to-blue-100" />
        <h3 class="text-lg  font-bold text-gray-800 ml-8">React</h3>
 
      </div>

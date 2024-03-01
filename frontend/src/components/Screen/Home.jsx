@@ -18,7 +18,6 @@ return (
      <FirstSection />
      <Categories  id="categories" />
      <Domain />
-     <h2 class=" container  text-4xl font-bold font-nunito mb-4 md:ml-[12vh]">Featured <span className="text-color6">Products</span></h2>
     </Fragment>
 )
 };

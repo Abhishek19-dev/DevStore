@@ -1,4 +1,4 @@
-import { FORGET_PASSWORD_FAIL, FORGET_PASSWORD_REQUEST, FORGET_PASSWORD_SUCCESS, LOGIN_AFTER_OTPVERIFICATION, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_RESET, LOGIN_SUCCESS, LOGOUT_FAIL, LOGOUT_REQUEST, LOGOUT_SUCCESS, OTP_VERIFICATION_FAIL, OTP_VERIFICATION_REQUEST, OTP_VERIFICATION_SUCCESS, REGISTERED_LOGIN, REGISTER_FAIL, REGISTER_REQUEST, REGISTER_SUCCESS, RESET_PASSWORD_FAIL, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS } from "../ActionType"
+import { FORGET_PASSWORD_FAIL, FORGET_PASSWORD_REQUEST, FORGET_PASSWORD_SUCCESS, LOGIN_AFTER_OTPVERIFICATION, LOGIN_FAIL, LOGIN_REQUEST, LOGIN_RESET, LOGIN_SUCCESS, LOGOUT_FAIL, LOGOUT_REQUEST, LOGOUT_SUCCESS, OTP_VERIFICATION_FAIL, OTP_VERIFICATION_REQUEST, OTP_VERIFICATION_SUCCESS, REGISTERED_LOGIN, REGISTER_FAIL, REGISTER_REQUEST, REGISTER_SUCCESS, RESET_PASSWORD_CHANGE, RESET_PASSWORD_FAIL, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS } from "../ActionType"
 
 export const loginReducer = (state={
     loading:false,
@@ -30,14 +30,6 @@ const {type,payload} = action
                  error:payload
 
              }
-             case LOGIN_AFTER_OTPVERIFICATION:
-                return{
-                    ...state,
-                    loading:false,
-                    isAuthenticated:true,
-                    user : payload,
-                    error:null
-                }
              case LOGIN_RESET:
                  return{
                      ...state,
@@ -109,7 +101,8 @@ const {type,payload} = action
                 ...state,
                  loading:false,
                  isRegistered:true,
-                 user : payload
+                 user : payload,
+                 error:""
              }
              case REGISTER_FAIL: 
              return{
@@ -240,6 +233,15 @@ const {type,payload} = action
                  isReset:false,
                  user:{},
                  error:payload
+
+             }
+             case RESET_PASSWORD_CHANGE: 
+             return{
+                 ...state,
+                 loading:false,
+                 isReset:false,
+                 user:{},
+                 error:""
 
              }
              default:

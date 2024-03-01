@@ -12,7 +12,7 @@ import { getProjectDetails } from '../../../Redux/Actions/ProjectAction';
     // Handle the case where there are no images
     return null;
   }
-    console.log("images",images[0].url)
+    // console.log("images",images[0].url)
 
 return (
     <>

@@ -5,10 +5,10 @@ import loginGif from "../../../images/login.gif";
 import { loginAction } from "../../../Redux/Actions/authAction";
 
 const Login = () => {
+ 
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
-
   const { user ,error , isAuthenticated } = useSelector((state) => state.loginAuth);
   const navigate = useNavigate();
   useEffect(() => {
