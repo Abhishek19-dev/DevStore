@@ -27,7 +27,6 @@ import { useParams } from 'react-router';
 //     setLanguages(newLanguages)
 //   }
 
-  
   const {projects} = useSelector((state)=> state.project)
  
  

@@ -31,12 +31,7 @@ const projectSchema = new Schema({
         ref : "User",
         required:true,
     },
-    phoneNo :{
-        type : Number,
-        required : [true, "Please Enter project Title"],
-        minLength:[10,"Phone No must be atleast 10 Digits"],
-        maxLength:[10,"PhoneNo cannaot excedd 10 numbers"]
-    },
+   
     price :{
         type : Number,
         required : [true, "Please Enter project Title"],

@@ -105,6 +105,18 @@ const Filters = () => {
             className="w-full border border-gray-300 rounded px-3 py-2"
           />
         </div>
+
+        <div className="mb-4 mt-4">
+          <label className="block text-xl text-color7 font-nunito font-bold mb-2" htmlFor="language">
+           Domain
+          </label>
+          <input
+            type="text"
+            id="language"
+            className="w-full border border-gray-300 rounded px-3 py-2"
+          />
+        </div>
+
         <div className="mb-8">
           <div className="overflow-y-auto max-h-40 scrollbar-track-gray-200 scrollbar-thumb-indigo-500">
             <div className="scrollbar-line-indigo-500"></div>
