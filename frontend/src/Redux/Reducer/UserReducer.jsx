@@ -114,7 +114,7 @@ export const updatePasswordReducer = (state={
         case UPDATE_PASSWORD_RESET:
             return{
                 ...state,
-            loading:true,
+            loading:false,
             message : '',
             isUpdated:false,
             error:''

@@ -3,44 +3,70 @@
 
 import { useDispatch, useSelector } from 'react-redux';
 import { editProjectDetailsAction, editProjectReset, getProjectDetails } from '../../../Redux/Actions/ProjectAction';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { EDIT_PROJECT_RESET } from '../../../Redux/ActionType';
+import { Box ,Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react'
+import { useToast } from '@chakra-ui/react';
+
  
  const EditProjectDetails = () =>{
     const dispatch = useDispatch()
    const {id} = useParams()
+   const toast = useToast()
 
-   
-
-   const {project} = useSelector((state)=> state.projectDetails)
+   const [title , setTitle] = useState("")
+  const [description , setDescription] = useState("")
+  const [languages , setLanguages] = useState("")
+  const [domain , setDomain] = useState("")
+  const [price , setPrice] = useState("")
+  const navigate = useNavigate()
+   const {loading :getProjectLoading , project} = useSelector((state)=> state.projectDetails)
    useEffect(()=>{
     dispatch(getProjectDetails(id))
    },[dispatch,id])
      
-  const [title , setTitle] = useState(project.title)
-  const [description , setDescription] = useState(project.description)
-  const [languages , setLanguages] = useState(project.languages)
-  const [domain , setDomain] = useState(project.domain)
-  const [price , setPrice] = useState(project.price)
+
+   console.log("project",project)
+
+   useEffect(()=>{
+    if(project){
+        setTitle(project.title)
+        setDescription(project.description)
+        setLanguages(project.languages)
+        setDomain(project.domain)
+        setPrice(project.price)
+    }
+   },[project])
+  
 
   const handleUpdate = (e) =>{
     e.preventDefault()
-    dispatch(editProjectDetailsAction(title,description,languages,domain,price,id))
+
+    if(title === '' || description === '', languages === '' , domain === '' , price===''){
+        toast({
+            title:'Please fill all the fields',
+            status:'error',
+            isClosable:true
+        })
+    }
+    else{
+        dispatch(editProjectDetailsAction(title,description,languages,domain,price,id))
+    }
   }
 
-const {isEdited} = useSelector((state)=> state.editProject)
+const {isEdited , loading : updateProjectLoading} = useSelector((state)=> state.editProject)
 
 useEffect(()=>{
     if(isEdited){
-       
-        setTimeout(()=>{
-            console.log(" edithi")
-            dispatch(
-                {
-                    type:EDIT_PROJECT_RESET
-                }
-            )
-        },10000)   
+        toast({
+            title:"Project Updated SuccessFully",
+            status:"success",
+           isClosable:true
+        })
+        navigate("/myProjects")
+        dispatch({
+            type:EDIT_PROJECT_RESET
+        })
     }
    },[dispatch,isEdited])
 
@@ -52,64 +78,55 @@ return (
   <h2 className="text-3xl font-nunito text-white w-full font-semibold bg-indigo-500 mb-4 py-3 text-center">
               Update Project
             </h2>
-      <form action="#">
+            {
+                getProjectLoading ? <Box padding='6' boxShadow='lg' bg='white'>
+                <SkeletonCircle size='10' />
+                <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
+              </Box> :  <form action="#">
           <div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
               <div class="sm:col-span-2">
                   <label for="name" class="block mb-2 ml-6 text-sm font-medium text-gray-900 ">Project Title</label>
-                  <input type="text" name="name" id="name" class="bg-gray-50 border ml-6 border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[80vh] p-2.5   dark:focus:ring-primary-500 dark:focus:border-primary-500" value= {title}
-                  onChange = {(e)=> setTitle(e.target.value)} placeholder="Type product name" required="" />
+                  <input type="text" name="name" id="name" class="bg-gray-50 border ml-6 border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[80%] p-2.5   dark:focus:ring-primary-500 dark:focus:border-primary-500" value= {title}
+                  onChange = {(e)=> setTitle(e.target.value)} placeholder="Type Project name" required="" />
               </div>
               <div class="w-full">
                   <label for="brand" class="block mb-2 ml-6 text-sm font-medium text-gray-900 ">Languages</label>
-                  <input type="text" name="brand" id="brand" class="bg-gray-50 ml-6 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[40vh] p-2.5 dark:focus:ring-primary-500 dark:focus:border-primary-500" value={languages} onChange={(e)=> setLanguages(e.target.value)} placeholder="Product brand" required="" />
+                  <input type="text" name="brand" id="brand" class="bg-gray-50 ml-6 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[80%] p-2.5 dark:focus:ring-primary-500 dark:focus:border-primary-500" value={languages} onChange={(e)=> setLanguages(e.target.value)} placeholder="HTML , React , etc" required="" />
               </div>
               <div class="w-full">
                   <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Category</label>
-                  <input type="text" name="category" id="category" class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[40vh] p-2.5  dark:focus:ring-primary-500 dark:focus:border-primary-500" value={domain}
-                  onChange={(e)=>setDomain(e.target.value)} placeholder="$299" required="" />
+                  <input type="text" name="category" id="category" class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[80%] p-2.5  dark:focus:ring-primary-500 dark:focus:border-primary-500" value={domain}
+                  onChange={(e)=>setDomain(e.target.value)} placeholder="Web Dev etc" required="" />
               </div>
               <div>
                   <label for="price" class="block mb-2 ml-6 text-sm font-medium text-gray-900 ">Price</label>
-                  <input type="number" name="number" id="number" class=" resize-none appearance-none bg-gray-50 border ml-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[40vh] p-2.5 dark:focus:ring-primary-500 dark:focus:border-primary-500" value={price} onChange={(e)=>setPrice(e.target.value)} placeholder="Enter text" required="" />
+                  <input type="number" name="number" id="number" class=" resize-none appearance-none bg-gray-50 border ml-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[40vh] p-2.5 dark:focus:ring-primary-500 dark:focus:border-primary-500" value={price} onChange={(e)=>setPrice(e.target.value)} placeholder="Enter Number" required="" />
               </div>
-              {/* <div>
-                  <label for="item-weight" class="block mb-2 text-sm font-medium text-gray-900 ">Item Weight (kg)</label>
-                  <input type="number" name="item-weight" id="item-weight" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="15" placeholder="Ex. 12" required="" />
-              </div>  */}
+            
               <div class="sm:col-span-2">
                   <label for="description" class="block mb-2 ml-6 text-sm font-medium text-gray-900 ">Description</label>
-                  <textarea id="description" rows="8" class="block w-[80vh] ml-6 p-2.5  text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500  dark:focus:ring-primary-500 dark:focus:border-primary-500" value={description} 
+                  <textarea id="description" rows="8" class="block w-[80%] ml-6 p-2.5  text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500  dark:focus:ring-primary-500 dark:focus:border-primary-500" value={description} 
                   onChange={(e)=>setDescription(e.target.value)} placeholder="Write a product description here..."></textarea>
               </div>
           </div>
           
-          {isEdited ?    <div class="w-[60vh] ml-6 my-2 overflow-hidden rounded shadow-sm">
-        <div class="relative flex items-center justify-between px-2 py-2 font-bold text-white bg-green-500 rounded-t">
-            <div class="relative flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                    class="inline w-6 h-6 mr-2 opacity-75">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>Success</span>
-            </div>
-            <span class="relative">
-                <svg class="w-5 h-5 text-green-300 fill-current hover:text-white" role="button"
-                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <title>Close</title>
-                    <path
-                        d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
-                </svg>
-            </span>
-        </div>
-        <div class="p-3 bg-white border border-gray-300 rounded-b shadow-lg">
-            <span class="block text-gray-600">Project Edited successfully!</span>
-        </div>
-    </div> : "" }
+          
        
 
           <div class="flex items-center ml-10 my-3 space-x-4">
-              <button onClick={handleUpdate} type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
+              <button onClick={handleUpdate} type="submit" class="text-white flex items-center justify-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
+                {
+                     updateProjectLoading ?  <svg
+                     width="20"
+                     height="20"
+                     fill="currentColor"
+                     class="mr-2 animate-spin"
+                     viewBox="0 0 1792 1792"
+                     xmlns="http://www.w3.org/2000/svg"
+                   >
+                     <path d="M526 1394q0 53-37.5 90.5t-90.5 37.5q-52 0-90-38t-38-90q0-53 37.5-90.5t90.5-37.5 90.5 37.5 37.5 90.5zm498 206q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-704-704q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm1202 498q0 52-38 90t-90 38q-53 0-90.5-37.5t-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-964-996q0 66-47 113t-113 47-113-47-47-113 47-113 113-47 113 47 47 113zm1170 498q0 53-37.5 90.5t-90.5 37.5-90.5-37.5-37.5-90.5 37.5-90.5 90.5-37.5 90.5 37.5 37.5 90.5zm-640-704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm530 206q0 93-66 158.5t-158 65.5q-93 0-158.5-65.5t-65.5-158.5q0-92 65.5-158t158.5-66q92 0 158 66t66 158z"></path>
+                   </svg> : ""
+                }
                   Update product
               </button>
               <Link to = "/myProjects">
@@ -119,6 +136,8 @@ return (
               </Link>
           </div>
       </form>
+            }
+     
   </div>
   <img src= {editDetailsPhotos} alt="" className='w-[100vh]'/>
 </section>
