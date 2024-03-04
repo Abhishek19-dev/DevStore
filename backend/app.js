@@ -23,6 +23,7 @@ const user = require('./routes/userRoute')
 const order = require("./routes/orderRoute")
 const project = require("./routes/projectRoute")
 const chat = require("./routes/chatRoute")
+const message = require("./routes/messageRoute")
 
 
 
@@ -31,6 +32,7 @@ app.use("/api/v1/",user.router)
 app.use("/api/v1/",order.router)
 app.use("/api/v1/",project.router)
 app.use("/api/v1/",chat.router)
+app.use("/api/v1", message.router);
 
 
 

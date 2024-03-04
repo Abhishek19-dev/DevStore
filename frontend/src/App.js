@@ -19,7 +19,7 @@ import OtpScreen from './components/Screen/Auth/OtpScreen';
 import ForgetPassword from './components/Screen/Auth/ForgetPassword';
 import ResetPassword from './components/Screen/Auth/ResetPassword';
 import { useState } from 'react';
-import ChatScreen from './components/Screen/ChatScreen';
+import ChatScreen from './components/Screen/ChatScreen/ChatScreen';
 // import Getreviews from './components/Reviews';
 
 
@@ -37,6 +37,7 @@ function App() {
           <Route path="/forgetPassword" element= {<ForgetPassword />} />
           <Route path="/projects" element={<ProjectScreen />} />
           <Route path="/password/reset/:token" element= {<ResetPassword />} />
+          <Route path="/chats" element= {<ChatScreen />}/>
         </Routes>
 
     </>
@@ -60,7 +61,6 @@ function MainLayout() {
         <Route path="/editProject/:id" element= {<EditProjectDetails />}/>
         <Route path="/buy" element= {<Buy />}/>
         <Route path="/thankYou" element= {<ThankYou />}/>
-        <Route path="/chats" element= {<ChatScreen />}/>
         {/* <Route path="/projectReviews/:id" element= {<Getreviews />} /> */}
       </Routes>
       <Footer />
