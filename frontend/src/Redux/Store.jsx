@@ -4,6 +4,7 @@ import {composeWithDevTools} from "redux-devtools-extension"
 import {addReviewReducer, buyProjectReducer, deleteProjectUserReducer, editProjectReducer, getAllReviewsReducer,  getMyProjectsReducer, projectDetailsReducer, projectReducer, sellProjectReducer } from "./Reducer/ProjectReducer"
 import { forgetPasswordReducer, loginReducer, logoutReducer, otpVerificationReducer, registerReducer, resetPasswordReducer } from "./Reducer/AuthReducer"
 import { editProfileReducer, getUserDetailsReducer, updatePasswordReducer } from "./Reducer/UserReducer"
+import { accessChatReducer, allChatUserReducer, allMessagesReducer, searchUserReducer, sendMessagesReducer } from "./Reducer/messagesReducer"
 
 const reducer = combineReducers({
     project : projectReducer,
@@ -23,7 +24,12 @@ const reducer = combineReducers({
     deleteProject:deleteProjectUserReducer,
     editProject:editProjectReducer,
     sellProject:sellProjectReducer,
-    buyProject : buyProjectReducer
+    buyProject : buyProjectReducer,
+    searchUser : searchUserReducer,
+  accessChat : accessChatReducer,
+  allChats : allChatUserReducer,
+  sendMessage : sendMessagesReducer,
+  allMessages : allMessagesReducer,
 })
    
 

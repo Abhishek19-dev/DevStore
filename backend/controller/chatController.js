@@ -1,5 +1,4 @@
 
-
 const catchasyncerror = require('../middleware/catchasyncerror');
 const Chat = require('../model/chatModel');
 const User = require("../model/usermodel");

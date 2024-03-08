@@ -309,6 +309,7 @@ const NavBar = () => {
           </div>
 
           <div>
+            <Link to='/chats'>
             <button
               class="lg:mr-8 py-4 ml-3 px-1 mt-2 mr-3 relative border-2 border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out"
               aria-label="Cart"
@@ -330,6 +331,8 @@ const NavBar = () => {
                 </div>
               </span>
             </button>
+            </Link>
+           
           </div>
           <div>
            
