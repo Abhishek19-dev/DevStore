@@ -30,7 +30,7 @@ import { BUY_PROJECT_RESET } from '../../Redux/ActionType';
    
 return (
     <>
-    <div class="flex py-10 bg-gradient-to-t from-slate-50 to-blue-100">
+    <div class="flex py-10 bg-color17 ">
     <div class="w-[100vh] h-[100vh] bg-white ml-10 border border-color3 border-rounded flex flex-col  items-center">
      <img className='w-[40vh] h-[40vh] ml-10 ' src= {sendMailArrow} alt="" />
     <p class="text-center font-bold text-xl font-nunito mt-5">Your Request Has Been Successfully Sent!</p>

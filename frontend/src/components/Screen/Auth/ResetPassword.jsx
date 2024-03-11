@@ -51,7 +51,7 @@ import { RESET_PASSWORD_CHANGE } from '../../../Redux/ActionType';
 
 return (
     <>
-      <section class="bg-gradient-to-t flex flex-col lg:justify-around items-center w-full h-[100vh]   from-slate-50 to-blue-100 ">
+      <section class="bg-color17  flex flex-col lg:justify-around items-center w-full h-[100vh]">
         <div className="lg:pt-[3rem]">
           <p class="font-nunito  flex flex-col justify-between   h-[full] font-semibold text-lg p-[1rem]     text-black">
             <span class="text-color7  ml-[5rem] md:ml-[20rem] lg:ml-[14rem] mb-[1.5rem]   font-nunito font-bold text-3xl md:text-5xl lg:text-7xl ">

@@ -13,7 +13,7 @@ import ProjectLoader from './ProjectLoader';
  
 return (
     <>
-  <section className='w-full p-6   h-[90.5vh] flex flex-row'>
+  <section className='w-full p-6  bg-color17   h-[90.5vh] flex flex-row'>
   <div className=' h-full w-[20%]'>
     <Filters />
   </div>

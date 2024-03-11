@@ -3,7 +3,7 @@ import thunk from "redux-thunk"
 import {composeWithDevTools} from "redux-devtools-extension"
 import {addReviewReducer, buyProjectReducer, deleteProjectUserReducer, editProjectReducer, getAllReviewsReducer,  getMyProjectsReducer, projectDetailsReducer, projectReducer, sellProjectReducer } from "./Reducer/ProjectReducer"
 import { forgetPasswordReducer, loginReducer, logoutReducer, otpVerificationReducer, registerReducer, resetPasswordReducer } from "./Reducer/AuthReducer"
-import { editProfileReducer, getUserDetailsReducer, updatePasswordReducer } from "./Reducer/UserReducer"
+import { editProfileReducer, getSingleUserReducer, getUserDetailsReducer, updatePasswordReducer } from "./Reducer/UserReducer"
 import { accessChatReducer, allChatUserReducer, allMessagesReducer, searchUserReducer, sendMessagesReducer } from "./Reducer/messagesReducer"
 
 const reducer = combineReducers({
@@ -30,6 +30,7 @@ const reducer = combineReducers({
   allChats : allChatUserReducer,
   sendMessage : sendMessagesReducer,
   allMessages : allMessagesReducer,
+  getSingleUser : getSingleUserReducer,
 })
    
 

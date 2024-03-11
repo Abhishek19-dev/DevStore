@@ -6,13 +6,18 @@ const SideBar = ({ selectedChat, setSelectedChat, chat ,reqUser,setReqUser}) => 
   const { user } = useSelector((state) => state.userDetails);
   const requiredUser = getSideBarUser(user, chat);
   setReqUser(requiredUser)
+  console.log("req user",reqUser)
 
+  // useEffect(() => {
+  //   const requiredUser = getSideBarUser(user, chat);
+  //   setReqUser(requiredUser);
+  // }, [user, chat]);
   return (
     <>
-      <div onClick={setSelectedChat(chat)} class={selectedChat && selectedChat._id === chat._id ? "flex flex-row py-4 px-2 items-center border-b-2 border-l-4 border-blue-400" : "flex flex-row py-4 px-2 justify-center items-center border-b-2" }>
+      <div onClick={setSelectedChat(chat)} class={selectedChat && selectedChat._id === chat._id ? "flex bg-white flex-row py-4 px-2 items-center border-b-2 border-l-4 border-blue-400" : "flex flex-row py-4 px-2 justify-center items-center border-b-2" }>
         <div class="w-1/4">
           <img
-            src= {reqUser ? reqUser.avatar.url : ""}
+            src={reqUser ?. avatar ?. url}
             class="object-cover h-12 w-12 rounded-full"
             alt=""
           />

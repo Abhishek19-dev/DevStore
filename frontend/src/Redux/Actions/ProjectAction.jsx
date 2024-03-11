@@ -65,8 +65,6 @@ export const addReviewAction = (comment,rating,id) => async(dispatch)=>{
         dispatch({
             type:ADD_REVIEW_REQUEST,
         })
-       
-   
         const config = {headers :{"Content-type":"application/json"}};
         const {data} = await axios.put(`/api/v1/addReview/${id}`,{comment,rating},config)
 
@@ -75,6 +73,7 @@ export const addReviewAction = (comment,rating,id) => async(dispatch)=>{
             payload:data
         
         })
+        dispatch(getAllReviews(id))
         
     } catch (error) {
     console.log(error)
@@ -113,14 +112,14 @@ export const addReviewAction = (comment,rating,id) => async(dispatch)=>{
 
 
     //Get user all Projects
-    export const getMyProjects = () => async(dispatch) =>{
+    export const getMyProjects = (id) => async(dispatch) =>{
         try {
             
            dispatch({
                type:GET_USER_ALL_PROJECT_REQUEST,
            })
-          let link = `/api/v1/myProjects`
-           const {data} = await axios.get(link)
+           const config = {headers :{"Content-type":"application/json"}};
+           const {data} = await axios.post(`/api/v1/SellProjectsList`,{id},config)
     
            dispatch({
                type : GET_USER_ALL_PROJECT_SUCCESS,

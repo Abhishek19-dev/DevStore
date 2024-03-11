@@ -1,4 +1,4 @@
-import { EDIT_DETAILS_FAIL, EDIT_DETAILS_REQUEST, EDIT_DETAILS_SUCCESS, GET_EDITED_USER_DETAILS_REQUEST, GET_USER_DETAILS_FAIL, GET_USER_DETAILS_REQUEST, GET_USER_DETAILS_SUCCESS, UPDATE_PASSWORD_FAIL, UPDATE_PASSWORD_REQUEST, UPDATE_PASSWORD_SUCCESS , UPDATE_PASSWORD_RESET, EDIT_PROFILE_RESET, GET_USER_DETAILS_RESET } from "../ActionType"
+import { EDIT_DETAILS_FAIL, EDIT_DETAILS_REQUEST, EDIT_DETAILS_SUCCESS, GET_EDITED_USER_DETAILS_REQUEST, GET_USER_DETAILS_FAIL, GET_USER_DETAILS_REQUEST, GET_USER_DETAILS_SUCCESS, UPDATE_PASSWORD_FAIL, UPDATE_PASSWORD_REQUEST, UPDATE_PASSWORD_SUCCESS , UPDATE_PASSWORD_RESET, EDIT_PROFILE_RESET, GET_USER_DETAILS_RESET, GET_SINGLE_USER_REQUEST, GET_SINGLE_USER_SUCCESS, GET_SINGLE_USER_FAIL, GET_SINGLE_USER_RESET } from "../ActionType"
 
 export const editProfileReducer = (state={
     loading:false,
@@ -119,6 +119,43 @@ export const updatePasswordReducer = (state={
             isUpdated:false,
             error:''
 
+            }
+        default:
+               return state
+    }
+}
+
+//get single user details
+export const getSingleUserReducer= (state={
+    loading:false,
+    user:{}
+},action) =>{
+    const {type , payload} = action
+    switch(type){
+        case GET_SINGLE_USER_REQUEST:
+            return{
+            ...state,
+            loading:true,
+        }
+        case GET_SINGLE_USER_SUCCESS:
+            return{
+                ...state,
+            loading:false,
+            user:payload.user
+        }
+        case GET_SINGLE_USER_FAIL:
+        return{
+            ...state,
+            loading :false,
+            error:payload,
+            user:""
+        }
+        case GET_SINGLE_USER_RESET:
+            return {
+                ...state,
+                loading :false,
+                error:"",
+                user:{}
             }
         default:
                return state

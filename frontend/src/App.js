@@ -20,6 +20,7 @@ import ForgetPassword from './components/Screen/Auth/ForgetPassword';
 import ResetPassword from './components/Screen/Auth/ResetPassword';
 import { useState } from 'react';
 import ChatScreen from './components/Screen/ChatScreen/ChatScreen';
+import UserBio from './components/Screen/UserBio';
 // import Getreviews from './components/Reviews';
 
 
@@ -59,6 +60,7 @@ function MainLayout() {
         <Route path="/myProfile" element= {<EditProfile />}/>
         <Route path="/myProjects" element= {<MyProject />}/>
         <Route path="/editProject/:id" element= {<EditProjectDetails />}/>
+        <Route path="/userBio/:id" element= {<UserBio />}/>
         <Route path="/buy" element= {<Buy />}/>
         <Route path="/thankYou" element= {<ThankYou />}/>
         {/* <Route path="/projectReviews/:id" element= {<Getreviews />} /> */}

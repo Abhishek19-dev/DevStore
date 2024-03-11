@@ -3,14 +3,6 @@ import moment from "moment";
 
 const ReviewSingle = ({review}) => {
 
-//   const options ={
-//     edit:false,
-//     color:"rgba(20,20,20,0.1)",
-//     activeColor:"tomato",
-//     size:window.innerWidth <600 ? 20:25,
-//     value:4,
-//     isHalf:true,
-// }
 const {name , comment , createdAt} = review
 
  const timeStamp = createdAt
@@ -29,7 +21,7 @@ const {name , comment , createdAt} = review
       <div class="flex flex-col  mb-4 mt-5 ml-4 border border-1 mr-3 bg-gradient-to-t from-slate-100 to-blue-50 rounded-lg">
         <div class ="flex mt-4 mb-4">
           <img
-            src="https://cdn3.iconfinder.com/data/icons/essential-rounded/64/Rounded-31-512.png"
+            src= {review.user ? review.user.avatar.url :""}
             alt="User Avatar"
             class="w-10 h-10 rounded-full mr-2 ml-4 mt-1"
           />

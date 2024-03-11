@@ -37,7 +37,7 @@ import { useToast } from '@chakra-ui/react';
     // },[forgetPasswordError,isSent])
 return (
     <>
-     <section class="bg-gradient-to-t flex flex-col lg:justify-around items-center w-full h-[100vh]   from-slate-50 to-blue-100 ">
+     <section class="bg-color17  flex flex-col lg:justify-around items-center w-full h-[100vh]">
         {/* <section class="  w-[100%]  flex flex-col  h-[100vh]"> */}
         <div className="lg:pt-[3rem]">
           <p class="font-nunito  flex flex-col justify-between   h-[full] font-semibold text-lg p-[1rem]     text-black">

@@ -40,7 +40,9 @@ const Login = () => {
 
   return (
     <>
-      <section class="bg-gradient-to-t flex flex-col items-center from-slate-50 to-blue-100 h-full">
+     {/* <section className="bg-gradient-to-t from-slate-50 to-blue-100 flex flex-col items-center h-full"> */}
+     <section className="bg-color17 flex flex-col items-center h-full">
+      {/* <section class="bg-'#eff3f6' h-full"> */}
       <div className="pt-[3rem]">
           <p class="font-nunito  flex flex-col justify-between  h-[full] font-semibold text-lg p-[1rem]    text-black">
             <span class="text-color7  ml-[5rem] md:ml-[20rem] lg:ml-[14rem] mb-[1.5rem]   font-nunito font-bold text-3xl md:text-5xl lg:text-7xl ">

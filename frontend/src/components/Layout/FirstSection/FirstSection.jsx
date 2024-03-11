@@ -3,7 +3,8 @@
  const FirstSection = () =>{
 return (
     <Fragment>
-      <div className=" hidden lg:flex flex-row-reverse max-w-full max-h-[100vh] bg-gradient-to-t from-slate-50 to-blue-100 ">
+      {/* <div className=" hidden lg:flex flex-row-reverse max-w-full max-h-[100vh] bg-gradient-to-t from-slate-50 to-blue-100 "> */}
+      <div className=" hidden lg:flex flex-row-reverse max-w-full max-h-[100vh] bg-color17">
       <div>
           <img className = "w-[50vw]" src= {FirstSectionImg} alt="" />
     </div>
@@ -36,18 +37,7 @@ return (
 
 
 
-  {/* <div class="relative p-12 w-full sm:max-w-2xl sm:mx-auto">
-    <div class="overflow-hidden z-0 rounded-full relative p-3">
-      <form role="form" class="relative flex z-50 bg-white rounded-full">
-        <input type="text" placeholder="enter your search here" class="rounded-full flex-1 px-6 py-4 text-gray-700 focus:outline-none" />
-        <button class="bg-indigo-500 text-white rounded-full font-semibold px-8 py-4 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none">Search</button>
-      </form>
-      <div class="glow glow-1 z-10 animate-glow1 bg-pink-400 rounded-100 w-120 h-120 -top-10 -left-10 absolute"></div>
-      <div class="glow glow-2 z-20 animate-glow2 bg-purple-400 rounded-100 w-120 h-120 -top-10 -left-10 absolute"></div>
-      <div class="glow glow-3 z-30 animate-glow3 bg-yellow-400 rounded-100 w-120 h-120 -top-10 -left-10 absolute"></div>
-      <div class="glow glow-4 z-40 animate-glow4 bg-blue-400 rounded-100 w-120 h-120 -top-10 -left-10 absolute"></div>
-    </div>
-  </div> */}
+ 
 
 
 
@@ -58,7 +48,8 @@ return (
 
 
 {/* <---------------- MOBILE VERSION ---------------> */}
-      <div className=" bg-gradient-to-t from-slate-50 to-blue-100 max-h-fit flex flex-col md:h-full lg:hidden ">
+      {/* <div className=" bg-gradient-to-t from-slate-50 to-blue-100 max-h-fit flex flex-col md:h-full lg:hidden "> */}
+      <div className=" bg-color17 max-h-fit flex flex-col md:h-full lg:hidden ">
 
     <div className="m-auto font-nunito-400">
         

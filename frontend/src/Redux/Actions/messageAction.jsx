@@ -23,13 +23,13 @@ export const searchUser = (search) =>async(dispatch)=>{
  }
 
  //Create a chat Or Load a chAT:-
- export const accessChat = (userId) =>async(dispatch)=>{
+ export const accessChat = (user) =>async(dispatch)=>{
     try {
      dispatch({
          type: ACCESS_CHAT_REQUEST
       })
       const config = {headers:{"Content-type":"application/json"}}
-      const {data} = await axios.post("/api/v1/chat",{userId},config)
+      const {data} = await axios.post("/api/v1/chat",{userId:user._id},config)
       console.log("data",data.fullChat)
       dispatch({
           type : ACCESS_CHAT_SUCCESS,
@@ -37,9 +37,10 @@ export const searchUser = (search) =>async(dispatch)=>{
       })
       dispatch(getAllChat())
     } catch (error) {
+        const errorMessage = error.response ? error.response.data.message : 'An error occurred';
         dispatch({
          type : ACCESS_CHAT_FAIL,
-         payload:error.response.message.data
+         payload:errorMessage
         })
     }
  }

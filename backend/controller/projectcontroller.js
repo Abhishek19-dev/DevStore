@@ -102,7 +102,7 @@ exports.getAllProjects = catchasyncerror(async(req,res,next)=>{
 exports.getProjectById = catchasyncerror(async(req,res,next)=>{
     const project = await  Project.findById(req.params.id).populate(
         "user" ,
-        "name email avatar"
+        "name email phoneNo address bio linkedURL githubURL instagramURL avatar"
     )
     if(!project){
         return next(new ErrorHandler("There is some Glitch Project cannot be shown",404))
@@ -152,7 +152,10 @@ exports.addReview = catchasyncerror(async(req,res,next)=>{
 //get all review:-
 exports.allProjectReview = catchasyncerror(async(req,res,next)=>{
 
-      const project = await Project.findById(req.params.id);
+      const project = await Project.findById(req.params.id).populate(
+        "reviews.user" ,
+        "name email phoneNo address bio linkedURL githubURL instagramURL avatar")
+
       if(!project){
           next(new ErrorHandler("Project Not Found",400))
       }
@@ -167,8 +170,9 @@ exports.allProjectReview = catchasyncerror(async(req,res,next)=>{
 
 
 //Get all my projects 
-exports.getMyProjects = catchasyncerror(async(req,res,next)=>{
-    const projects = await Project.find({user:req.user._id})
+exports.getProjectsOfIndividualUsers= catchasyncerror(async(req,res,next)=>{
+    
+    const projects = await Project.find({user:req.body.id})
     
     res.status(200).json({
         success:true,

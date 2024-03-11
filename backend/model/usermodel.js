@@ -44,6 +44,18 @@ const userSchema = new Schema({
     type: String,
     default: "",
   },
+  linkedURL: {
+    type: String,
+    default: "",
+  },
+  githubURL: {
+    type: String,
+    default: "",
+  },
+  instagramURL: {
+    type: String,
+    default: "",
+  },
   gender: {
     type: String,
   },

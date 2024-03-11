@@ -30,6 +30,10 @@ const EditProfile = () => {
     whatsAppNo: userWhatsappNo,
     address: userAddress,
     bio: userBio,
+    linkedURL:userlinkedURL,
+    githubURL:usergithubURL,
+    instagramURL:userinstagramURL
+
   } = user;
   const {
     message,
@@ -76,6 +80,9 @@ const EditProfile = () => {
   const [whatsAppNo, setWhatsAppNo] = useState(userWhatsappNo);
   const [address, setAddress] = useState(userAddress);
   const [bio, setBio] = useState(userBio);
+  const [linkedURL, setLinkedURL] = useState(userlinkedURL);
+  const [githubURL, setGithubURL] = useState(usergithubURL);
+  const [instagramURL, setInstagramURL] = useState(userinstagramURL);
   const [gender, setGender] = useState(userBio);
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -83,6 +90,8 @@ const EditProfile = () => {
 
   const [editBio, setEditBio] = useState(false);
 
+
+  console.log("linekd URL before ",linkedURL)
   //for eye button in password
   function toggleOldPasswordVisibility() {
     setIsOldPasswordVisible((prevState) => !prevState);
@@ -104,6 +113,9 @@ const EditProfile = () => {
           whatsAppNo,
           address,
           bio,
+          linkedURL,
+          githubURL,
+          instagramURL,
           gender
         )
       );
@@ -127,7 +139,7 @@ const EditProfile = () => {
   //handle save changes button
   const saveChanges = () => {
     dispatch(
-      editProfileAction(name, email, phoneNo, whatsAppNo, address, bio, gender)
+      editProfileAction(name, email, phoneNo, whatsAppNo, address, bio, linkedURL,githubURL,instagramURL,gender)
     );
   };
 
@@ -153,7 +165,7 @@ const EditProfile = () => {
 
   return (
     <>
-      <div class="flex bg-gradient-to-t from-slate-100 to-blue-50 mb-10">
+      <div class="flex bg-color17  mb-10">
         <div className="flex flex-col">
           <div class="w-[80vh] h-fit mb-10 ml-[9vh] mt-[7vh] rounded-lg shadow-lg bg-white  border">
             <div class="flex flex-col">
@@ -353,6 +365,54 @@ const EditProfile = () => {
                 class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[85vh] mx-4 my-2"
               />
             </div>
+            <div class="mb-4">
+              <label
+                for="address"
+                class="ml-5 font-nunito font-semibold text-lg text-black"
+              >
+                Linked URL <span className="font-nunito font-thin text-sm">(*please Provide Correct Url*) </span>
+              </label>
+              <input
+                value={linkedURL}
+                onChange={(e) => setLinkedURL(e.target.value)}
+                type="text"
+                id="address"
+                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[85vh] mx-4 my-2"
+              />
+            </div>
+              
+            <div class="mb-4">
+              <label
+                for="address"
+                class="ml-5 font-nunito font-semibold text-lg text-black"
+              >
+                GitHub URL <span className="font-nunito font-thin text-sm">(*please Provide Correct Url*) </span>
+              </label>
+              <input
+                value={githubURL}
+                onChange={(e) => setGithubURL(e.target.value)}
+                type="text"
+                id="address"
+                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[85vh] mx-4 my-2"
+              />
+            </div>
+           
+            <div class="mb-4">
+              <label
+                for="address"
+                class="ml-5 font-nunito font-semibold text-lg text-black"
+              >
+                Instagram URL <span className="font-nunito font-thin text-sm">(*please Provide Correct Url*) </span>
+              </label>
+              <input
+                value={instagramURL}
+                onChange={(e) => setInstagramURL(e.target.value)}
+                type="text"
+                id="address"
+                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[85vh] mx-4 my-2"
+              />
+            </div>
+
             <div class="mb-4">
               <label class="ml-5 font-nunito font-semibold text-lg text-black">
                 Gender

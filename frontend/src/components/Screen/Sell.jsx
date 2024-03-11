@@ -210,7 +210,7 @@ const Sell = () => {
 
   return (
     <>
-      <section class="bg-gradient-to-t from-slate-50 to-blue-100  py-10">
+      <section class="bg-color17  py-10">
         <div class=" container mx-auto ">
           <div className="flex mt-2 pt-0 items-center ml-[30vh] mb-[3vh]">
             <img className="w-20 h-20" src={Sell1} alt="" />

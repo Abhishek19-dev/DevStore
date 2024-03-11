@@ -16,6 +16,8 @@ import projects from "../../../images/projects.png";
 import logout from "../../../images/logout.png";
 import account from "../../../images/account.png";
 import wishlist from "../../../images/wishlist.png";
+import { UilFacebookMessenger } from '@iconscout/react-unicons'
+import { IconButton } from "@chakra-ui/react";
 
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
@@ -35,7 +37,7 @@ const NavBar = () => {
     dispatch(logoutAction());
   };
   const { isLoggedOut } = useSelector((state) => state.logoutAuth);
- 
+
   <Link to="/" onClick={handleCategoryClick}>
     <li className=" lg:px-4 py-6 px-1.5">CATEGORIES</li>
   </Link>;
@@ -175,11 +177,14 @@ const NavBar = () => {
                 setProfileOpen(false);
               }}
             >
-             
               <img
                 className=" w-8 h-8 lg:w-10  rounded-full object-cover lg:h-10 lg:mr-2"
                 //   onClick={openProfile}
-                src={isAuthenticated ? user.avatar.url :"https://cdn3.iconfinder.com/data/icons/essential-rounded/64/Rounded-31-512.png"}
+                src={
+                  isAuthenticated
+                    ? user.avatar.url
+                    : "https://cdn3.iconfinder.com/data/icons/essential-rounded/64/Rounded-31-512.png"
+                }
                 alt=""
               />
               <div
@@ -228,22 +233,23 @@ const NavBar = () => {
                       </Link>
                     )}
                     <hr />
-                    {isAuthenticated &&  <Link to = "/myProfile">
-                      <li className="py-1 px-[1vh] flex">
-                        <img
-                          className="w-6 h-6 mx-2 mt-2"
-                          src={account}
-                          alt=""
-                        />
-                        <span className="font-nunito font-normal text-md pt-2 text-black">
-                          {" "}
-                          My Profile{" "}
-                        </span>
-                      </li>
-                      </Link>}
-                   
-                      
-                   <Link to = "/myProjects">
+                    {isAuthenticated && (
+                      <Link to="/myProfile">
+                        <li className="py-1 px-[1vh] flex">
+                          <img
+                            className="w-6 h-6 mx-2 mt-2"
+                            src={account}
+                            alt=""
+                          />
+                          <span className="font-nunito font-normal text-md pt-2 text-black">
+                            {" "}
+                            My Profile{" "}
+                          </span>
+                        </li>
+                      </Link>
+                    )}
+
+                    <Link to="/myProjects">
                       <li className="py-1 px-[1vh] flex">
                         <img
                           className="w-6 h-6 mx-2 mt-2"
@@ -255,7 +261,7 @@ const NavBar = () => {
                           My Projects{" "}
                         </span>
                       </li>
-                      </Link>
+                    </Link>
                     <a href="#">
                       <li className="py-1 px-[1vh] flex">
                         <img
@@ -309,58 +315,58 @@ const NavBar = () => {
           </div>
 
           <div>
-            <Link to='/chats'>
-            <button
-              class="lg:mr-8 py-4 ml-3 px-1 mt-2 mr-3 relative border-2 border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out"
-              aria-label="Cart"
-            >
-              <svg
-                class="h-6 w-6"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+            <Link to="/chats">
+              <button
+                class="lg:mr-8 py-4 ml-3 px-1 mt-2 mr-3 relative border-2 border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out"
+                aria-label="Cart"
               >
-                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-              </svg>
-              <span class="absolute inset-0 object-right-top -mr-6">
-                <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
-                  0
-                </div>
-              </span>
-            </button>
+                {/* <svg
+                  class="h-6 w-6"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M20 6L4 6"></path>
+                  <path d="M4 12L20 12"></path>
+                  <path d="M4 18L11 18"></path>
+                </svg> */}
+                <IconButton><UilFacebookMessenger /></IconButton>
+
+                <span class="absolute inset-0 object-right-top -mr-6">
+                  <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
+                    0
+                  </div>
+                </span>
+              </button>
             </Link>
-           
           </div>
           <div>
-           
-           <Link to = "/sell">
-            <div  class="box-border lg:mr-8 z-30 inline-flex items-center justify-center w-auto px-8 py-3 overflow-hidden font-bold text-white transition-all duration-300 bg-indigo-600 rounded-md cursor-pointer group ring-offset-2 ring-1 ring-indigo-300 ring-offset-indigo-200 hover:ring-offset-indigo-500 ease focus:outline-none">
-              <span class="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
-              <span class="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
-              <span class="relative z-20 flex items-center text-sm">
-                <svg
-                  class="relative w-5 h-5 mr-2 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  ></path>
-                </svg>
-                +SELL
-              </span>
+            <Link to="/sell">
+              <div class="box-border lg:mr-8 z-30 inline-flex items-center justify-center w-auto px-8 py-3 overflow-hidden font-bold text-white transition-all duration-300 bg-indigo-600 rounded-md cursor-pointer group ring-offset-2 ring-1 ring-indigo-300 ring-offset-indigo-200 hover:ring-offset-indigo-500 ease focus:outline-none">
+                <span class="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
+                <span class="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
+                <span class="relative z-20 flex items-center text-sm">
+                  <svg
+                    class="relative w-5 h-5 mr-2 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    ></path>
+                  </svg>
+                  +SELL
+                </span>
               </div>
-              </Link>
-
-              
+            </Link>
           </div>
         </div>
       </nav>

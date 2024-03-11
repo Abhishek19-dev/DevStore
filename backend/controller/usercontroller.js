@@ -20,7 +20,7 @@ exports.registerUser = catchasyncerror(async(req,res,next)=>{
     const {name , email , password} = req.body;
 
 
-    console.log("name email password",name,email,password)
+    // console.log("name email password",name,email,password)
     const file = req.file
     const fileUri = getDataUri(file)
  
@@ -91,10 +91,10 @@ exports.confirmOtpVerification = catchasyncerror(async(req,res,next)=>{
           message:"User Registered Successfully"
         })
     }
-    console.log("user" , user)
-    console.log("user.otpVerification",user.otpVerfication === enteredOtp)
-    console.log("user.otpVerification",typeof(user.otpVerfication) , typeof(enteredOtp))
-    console.log("user.otpVerificationExpire",user.otpVerficationExpire < Date.now())
+    // console.log("user" , user)
+    // console.log("user.otpVerification",user.otpVerfication === enteredOtp)
+    // console.log("user.otpVerification",typeof(user.otpVerfication) , typeof(enteredOtp))
+    // console.log("user.otpVerificationExpire",user.otpVerficationExpire < Date.now())
 
 
     if(user.otpVerfication !== enteredOtp){
@@ -270,6 +270,10 @@ exports.updatePassword = catchasyncerror(async(req,res,next)=>{
 //update profile :-
 exports.updateProfile = (catchasyncerror(async(req,res,next)=>{
 
+    console.log("inside")
+    console.log("linkedURL",req.body.linkedURL)
+    console.log("gitHubURL",req.body.githubURL)
+    console.log("instagramURL",req.body.instagramURL)
     const newUser = {
         name : req.body.name,
         email : req.body.email,
@@ -277,6 +281,9 @@ exports.updateProfile = (catchasyncerror(async(req,res,next)=>{
         whatsAppNo : req.body.whatsAppNo,
         address : req.body.address,
         bio : req.body.bio,
+        linkedURL : req.body.linkedURL,
+        githubURL: req.body.githubURL,
+        instagramURL :req.body.instagramURL,
         gender : req.body.gender,
     }
     const user = await User.findByIdAndUpdate(req.user.id,newUser,{
@@ -333,6 +340,9 @@ exports.updateUserRole = (catchasyncerror(async(req,res,next)=>{
         user
     })
 }))
+
+
+//Get individual user according to id or name;-
 
 
 

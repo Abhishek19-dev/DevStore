@@ -11,9 +11,13 @@ import messenger from "../../../images/messenger.png";
 import moment from "moment";
 import ReviewSingle from "../Review/ReviewSingle";
 import { Link, useParams } from "react-router-dom";
+import dateFormat from 'dateformat';
+import { accessChat } from "../../../Redux/Actions/messageAction";
+import { useToast } from "@chakra-ui/react";
 
 
 const ProjectDetails = () => {
+  const toast = useToast()
   
 const {id} = useParams()
 
@@ -37,10 +41,28 @@ const {id} = useParams()
 
   }
 
-  const { project } = useSelector((state)=> state.projectDetails)
-  
+  const { project} = useSelector((state)=> state.projectDetails)
+  const {user} = project
+  const {user:loginUser} = useSelector((state)=> state.userDetails)
   const {reviews} = useSelector((state)=> state.getAllReviews)
 
+   const handleAccessChat = ()=>{
+    dispatch(accessChat(user))
+   }
+
+   const {loading:addReviewLoading , error:addReviewLoadingError} = useSelector((state)=> state.addReview)
+
+   useEffect(()=>{
+    if(addReviewLoadingError === ""){
+        toast({
+          title:{addReviewLoadingError},
+          isClosable:true,
+          status: 'success',
+        })
+    }
+   })
+
+   const {loading:accessChatLoading} = useSelector((state)=> state.accessChat)
 
 
   if (!project || !project.images || project.images.length === 0) {
@@ -49,14 +71,11 @@ const {id} = useParams()
   let languages = project.languages.split(",");
   let domain = project.domain.split(",");
 
-  //convert it into mm/dd/yr:-
-  const timestamp = `${project.createdAt}`;
-  const momentObj = moment(timestamp);
-  const formattedDate = momentObj.format("MMMM DD, YYYY");
+  
 
   return (
     <>
-      <div className="container ml-20">
+      <div className="container">
         <section className="pt-12 pb-1">
           <div className=" mx-auto ">
             <div className="flex">
@@ -145,6 +164,7 @@ const {id} = useParams()
                       Add to Favorites
                     </button>
                   </div>
+                  <h1 className="font-nunito mt-6 ml-6">Created At : {project ? dateFormat(project.createdAt, "mmmm dS, yyyy") : ""}</h1>
                 </div>
               </div>
             </div>
@@ -158,23 +178,31 @@ const {id} = useParams()
                 <h2 className="text-3xl font-nunito text-white font-semibold bg-indigo-500 w-full py-3 text-center">
                   Developer
                 </h2>
+                <Link to = {`/userBio/${user._id}`}>
                 <div class="flex flex-col items-center mt-2">
                   <img
-                    src="https://cdn3.iconfinder.com/data/icons/essential-rounded/64/Rounded-31-512.png"
+                    src={user ? user.avatar.url :""}
                     class="w-[16vh] h-[16vh] mt-3"
                     alt=""
                   />
                   <span class="ml-2 mt-4 text-xl font-nunito text-color9 ">
-                    Abhishek
+                   {user ? user.name : ""}
                   </span>
                 </div>
+                </Link>
                 <div class=" mt-2 text-center text- font-nunito  font-medium">
-                  {formattedDate}
-                </div>
-                <button class="mt-4 mb-3 border border-1 border-color6 flex text-blue-500 py-2 px-4 mx-auto rounded">
+                  {user ? dateFormat(user.createdAt, "mmmm dS, yyyy") : ""}
+                </div>{
+                  user._id === loginUser._id ?  <button  class="mt-4 mb-3 border border-1 border-color6 flex text-cyan-50 py-2 px-4 mx-auto rounded" disabled>
+                  Message
+                </button> :  <Link to="/chats">
+                <button onClick={handleAccessChat}  class="mt-4 mb-3 border border-1 border-color6 flex text-blue-500 py-2 px-4 mx-auto rounded">
                   <img class="w-6 h-6 mr-2 " src={messenger} alt="" />
                   Message
-                </button>
+                </button> 
+                </Link>
+                }
+               
               </div>
 
               <div class="border border-gray-300 mt-4">

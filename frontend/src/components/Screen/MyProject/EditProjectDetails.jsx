@@ -73,7 +73,7 @@ useEffect(()=>{
 
 return (
     <>
-     <section class="bg-gradient-to-t from-slate-70 to-blue-35 pt-[5vh] mb-10 flex">
+     <section class="bg-color17  pt-[5vh] mb-10 flex">
   <div class="w-[100vh] ml-10 mr-5 border shadow-lg rounded-lg">
   <h2 className="text-3xl font-nunito text-white w-full font-semibold bg-indigo-500 mb-4 py-3 text-center">
               Update Project

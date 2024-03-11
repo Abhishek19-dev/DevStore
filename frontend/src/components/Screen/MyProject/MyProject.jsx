@@ -10,17 +10,17 @@ import MyProjectLoader from "./MyProjectLoader";
 
 const MyProject = () => {
   const dispatch = useDispatch();
+  const {user} = useSelector((state)=> state.userDetails)
+  const {_id:id} = user
   useEffect(() => {
-    dispatch(getMyProjects());
+    dispatch(getMyProjects(id));
   }, [dispatch]);
 
   const { projects , loading:MyProjectsLoading } = useSelector((state) => state.myProject);
 
   return (
     <>
-      <div className=" bg-gradient-to-t from-slate-70 to-blue-35 pt-[5vh]">
-
-       
+      <div className="bg-color17 pt-2">
         <div className="">
           {projects.length > 0 ? (
             <div className="flex mt-[5vh]">
@@ -36,7 +36,7 @@ const MyProject = () => {
             ""
           )}
 
-          <hr className="bg-color9 font-bold"></hr>
+          <hr className="bg-color9 font-bold z-1"></hr>
            {
              MyProjectsLoading ? <MyProjectLoader />:  <div className="grid grid-cols-1 gap-1">
              {projects.length > 0 ? (

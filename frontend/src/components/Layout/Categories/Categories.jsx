@@ -33,38 +33,38 @@
 return (
     <>
     {/* <------- DESKTOP VIEW -------> */}
-   <div class="py-8 z-00" >
+   <div class="py-8 z-00 " >
   <div class="container mx-auto">
     <h2 class="hidden md:block text-3xl pl-3 font-bold  md:text-4xl font-nunito mb-3  lg:text-4xl">Popular <span className="text-color6">Categories</span></h2>
     <div class="hidden md:grid  gird-cols-2    md:grid-cols-3 md:gap-2 lg:grid-cols-5 lg:gap-5">
        {/* Category 1 */}
-      <div class="bg-white   p-4 border-color7  hover:scale-105 hover:z-00 transition-transform">
+      <div class="bg-color17   p-4 border-color7  hover:scale-105 hover:z-00 transition-transform">
         <img src= {ArtificialIntelliegence} alt="Category 1" class="w-full h-52 object-cover mb-1 border-2 rounded-lg bg-gradient-to-t from-slate-50 to-blue-100" />
         <h3 class="text-lg font-bold text-gray-800 ml-4">Artificial Intelligence</h3>
 
       </div>
       
       {/* <!-- Category 2 --> */}
-      <div class="bg-white rounded-lg p-4 hover:scale-105 transition-transform">
+      <div class="bg-color17  rounded-lg p-4 hover:scale-105 transition-transform">
         <img src= {MachineLearning} alt="Category 2" class="w-full h-52 object-cover mb-1 border-2 rounded-lg bg-gradient-to-t from-slate-50 to-blue-100" />
         <h3 class="text-lg font-bold text-gray-800 ml-6">Machine Learning</h3>
 
       </div>
       
       {/* <!-- Category 3 --> */}
-      <div class="bg-white rounded-lg p-4 hover:scale-105 transition-transform">
+      <div class="bg-color17  rounded-lg p-4 hover:scale-105 transition-transform">
         <img src= {AndroidDevelopment}  alt="Category 3" class="w-full h-52 object-cover mb-1 border-2 rounded-lg bg-gradient-to-t from-slate-50 to-blue-100" />
         <h3 class="text-lg font-bold text-gray-800 ml-20">IOT</h3>
 
       </div>
       {/* Category 4 */}
-      <div class="bg-white rounded-lg p-4 border-color7 border-1 hover:scale-105 transition-transform">
+      <div class="bg-color17  rounded-lg p-4 border-color7 border-1 hover:scale-105 transition-transform">
         <img src= {WebDevelopment} alt="Category 1" class="w-full h-52 object-cover mb-1 border-2 rounded-lg bg-gradient-to-t from-slate-50 to-blue-100" />
         <h3 class="text-lg  font-bold text-gray-800 ml-8">Web Development</h3>
 
       </div>
       {/* Category 5 */}
-      <div class="bg-white rounded-lg p-4 border-color7 border-1 hover:scale-105 transition-transform">
+      <div class="bg-color17  rounded-lg p-4 border-color7 border-1 hover:scale-105 transition-transform">
         <img src= {AndroidDevelopment} alt="Category 1" class="w-full h-52 object-cover mb-1 border-2 rounded-lg bg-gradient-to-t from-slate-50 to-blue-100" />
         <h3 class="text-lg font-bold text-gray-800 ml-5">Android Development</h3>
 

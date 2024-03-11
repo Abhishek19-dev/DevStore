@@ -74,7 +74,7 @@ return (
       <div class="w-[40vh] ">
         <img className='h-full w-[40vh] rounded-lg' src={project.images[0].url} alt="Project Image" /> 
       </div>
-      <div class=" flex flex-col justify-between w-3/4 ml-10 border-gray-400">
+      <div class=" bg-white flex flex-col justify-between w-3/4 ml-10 border-gray-400">
         <h2 className='text-3xl font-nunito font-bold mt-2'>{project.title}</h2>
         <p class="overflow-auto font-nunito text-md font-medium ">Project Description</p>
         <div className="flex  items-center">
@@ -104,7 +104,7 @@ return (
         <p className='mb-2'><span className='font-bold font-nunito text-lg mb-4'>Asking Price: </span> $34</p>
       </div>
     </div>
-    <div class="flex w-[200vh] mt-5 border border-rounded">
+    <div class="flex w-[150vh] mt-5 border border-rounded">
   <div class="w-1/2 flex flex-col items-center justify-center border border-rounded bg-color15 bg-opacity-30">
     <img src= {sendMailGif} class="w-[60vh] h-[60vh]" alt="Icon" />
     <p class="mt-2 text-center mb-4 font-nunito font-semibold text-color16">Please describe your request in a nutshell!</p>
@@ -127,7 +127,7 @@ return (
       </div>
       
 
-<button onClick = {handleSendEmailButton} class="flex ml-[70vh] mb-5 items-center h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
+<button onClick = {handleSendEmailButton} class="flex ml-[48vh] mb-5 items-center h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
   <img className='w-7 h-7 pr-1 pl-1' src= {sendMailImg} alt="" />
   <span>Send Mail</span>
 </button>
@@ -135,11 +135,7 @@ return (
   </div>
 </div>
   </div>
-  
 </div>
-
-
-<h1>helloe</h1>
    </>
 )
 };
