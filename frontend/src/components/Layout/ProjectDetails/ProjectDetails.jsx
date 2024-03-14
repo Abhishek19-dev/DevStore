@@ -76,10 +76,10 @@ const {id} = useParams()
   return (
     <>
       <div className="container">
-        <section className="pt-12 pb-1">
-          <div className=" mx-auto ">
-            <div className="flex">
-              <div className="w-1/2 pr-8">
+        <section className="lg:pt-12 pt-6 pb-1">
+          <div className="mx-auto ">
+            <div className="flex lg:flex-row flex-col">
+              <div className="lg:w-1/2 w-full pr-8">
                 <div className="mb-2">
                   <img
                     src={project.images[0].url}
@@ -88,8 +88,8 @@ const {id} = useParams()
                   />
                 </div>
               </div>
-              <div className="w-1/2">
-                <div className="mb-6 border border-400 h-[70vh]">
+              <div className="lg:w-1/2 w-full">
+                <div className="mb-6 border border-400 lg:h-[70vh] h-[38rem]">
                   <h2 className="text-3xl font-nunito text-white font-semibold bg-indigo-500 mb-4 py-3 text-center">
                     Project Information
                   </h2>
@@ -142,7 +142,7 @@ const {id} = useParams()
                       </span>
                     </div>
                   </div>
-                  <div className="ml-10 mt-10 flex">
+                  <div className="lg:ml-10 ml-1 mt-10 flex">
                     <Link to = "/buy">
                     <button className="bg-indigo-600 text-white flex items-center px-4 py-2 mx-5  rounded">
                       <img
@@ -172,8 +172,8 @@ const {id} = useParams()
         </section>
 
         <section className="py-2 ">
-          <div class=" flex justify-between">
-            <div class="w-1/3  flex flex-col  h-fit">
+          <div class=" flex lg:flex-row flex-col justify-between">
+            <div class="lg:w-1/3 w-full  flex flex-col  h-fit">
               <div class="border border-gray-300 ">
                 <h2 className="text-3xl font-nunito text-white font-semibold bg-indigo-500 w-full py-3 text-center">
                   Developer
@@ -241,7 +241,7 @@ const {id} = useParams()
               </div>
             </div>
             {/* <a href="mailto:abhishekpadiyar6395@gmail.com?subject=Purchase Inquiry">Buy Now</a> */}
-            <div class="w-2/3 ml-3 border border-gray-300 rounded-r h-fit ">
+            <div class="lg:w-2/3 w-full mt-4 lg:mt-0 mb-2 lg:mb-0 lg:ml-3 border border-gray-300 rounded-r h-fit ">
               <h2 className="text-3xl font-nunito text-white font-semibold bg-indigo-500 w-full py-3 text-center">
                 Project Description
               </h2>

@@ -5,7 +5,7 @@
  const MyProjectLoader = () =>{
 return (
     <>
-    <Stack  mb='2rem' w='80%' ml='8rem' mt='1rem'>
+    <Stack  mb='2rem' w='80%' ml={{base:"3rem",lg:'8rem'}}  mt='1rem'>
   <Skeleton border='0.1px' borderRadius='lg' height='15rem' />
   <Skeleton border='0.1px' borderRadius='lg' height='15rem' />
 </Stack>

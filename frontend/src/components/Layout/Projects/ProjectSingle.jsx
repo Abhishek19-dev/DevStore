@@ -19,7 +19,7 @@ return (
     {/* <section class="py-6">
   <div class="container mx-auto"> */}
      <Link to = {`/project/${project._id}`}>
-      <div class=" ml-6 w-[20vh] md:ml-4 lg:ml-7 md:w-[22vh] lg:w-[40vh] bg-white border  rounded-lg   lg:mb-6">
+      <div class=" ml-[3.5rem] w-[full] md:ml-4 lg:ml-7 md:w-[22vh]  lg:w-[40vh] bg-white border  rounded-lg   lg:mb-6">
         <img src= {images[0].url} alt={images[0].public_id}  class="z-0 w-full mb-4 border-b-none rounded-lg" />
         <h3 class=" text-black pl-4 pr-4 pt-4 font-sans-serif font-bold  mb-2 truncate overflow:hidden">{title}</h3>
         <p class=" text-black font-nunito font-light text-100  mb-4 pl-6 text-sm pr-4 truncate overflow-hidden pt-5">"{description} </p>

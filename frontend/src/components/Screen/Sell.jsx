@@ -212,7 +212,7 @@ const Sell = () => {
     <>
       <section class="bg-color17  py-10">
         <div class=" container mx-auto ">
-          <div className="flex mt-2 pt-0 items-center ml-[30vh] mb-[3vh]">
+          <div className="flex mt-2 pt-0 items-center lg:ml-[30vh] ml-[1rem] mb-[3vh]">
             <img className="w-20 h-20" src={Sell1} alt="" />
             <h2 class="text-4xl pt-10 font-nunito text-black font-semibold mb-6">
               Sell your projects and earn money
@@ -221,7 +221,7 @@ const Sell = () => {
           <div className="flex flex-col lg:flex-row ">
             <div class="lg:w-1/2">
               <form
-                class="bg-white shadow-2xl rounded px-8 pt-6 pb-8 mb-4 h-[38rem]"
+                class="bg-white shadow-2xl rounded px-8 pt-6 pb-8 mb-4 lg:h-[38rem] h-[42rem]"
                 // class="bg-black h-[60%] shadow-2xl rounded px-8 pt-6 pb-8 mb-4"
                 onSubmit={sellProjectSubmitHandler}
               >
@@ -319,7 +319,7 @@ const Sell = () => {
             <div class="lg:w-1/2 mt-5">
               <p class=" text-center font-nunito py-5 ml-5 text-lg text-black">
                 {" "}
-                <span className="mt-5 ml-[11vh]  text-4xl font-semibold text-color9">
+                <span className="mt-5 lg:ml-[11vh] ml-[1rem]  text-4xl font-semibold text-color9">
                   Sell with Confidence{" "}
                 </span>{" "}
                 <br></br> "Reach the right audience - Our secure platform
@@ -329,7 +329,7 @@ const Sell = () => {
               <img
                 src={SellPage3}
                 alt="Sell with Confidence"
-                class="w-[100vh] h-[90vh] mt-0 ml-10"
+                class="lg:w-[100vh] w-[16rem] h-[16rem] lg:h-[90vh] mt-0 ml-10"
               />
             </div>
           </div>

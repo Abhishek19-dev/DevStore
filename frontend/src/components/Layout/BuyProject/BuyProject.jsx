@@ -69,15 +69,15 @@ return (
    <>
 
    <div class="flex container">
-  <div class="ml-12 w-[120vh]  mr-5 mt-8 mb-[10vh]">
-    <div class="flex border h-[35vh] w-[100vh] rounded-lg  border-gray-400">
-      <div class="w-[40vh] ">
+  <div class="lg:ml-12 ml-1  lg:w-[120vh] w-full  mr-5 mt-8 mb-[10vh]">
+    <div class="flex lg:flex-row p-2 flex-col border lg:h-[35vh] h-fit lg:w-[100vh] w-full rounded-lg  border-gray-400">
+      <div class="lg:w-[40vh] w-full ">
         <img className='h-full w-[40vh] rounded-lg' src={project.images[0].url} alt="Project Image" /> 
       </div>
-      <div class=" bg-white flex flex-col justify-between w-3/4 ml-10 border-gray-400">
-        <h2 className='text-3xl font-nunito font-bold mt-2'>{project.title}</h2>
-        <p class="overflow-auto font-nunito text-md font-medium ">Project Description</p>
-        <div className="flex  items-center">
+      <div class=" bg-white flex flex-col justify-between lg:w-3/4 w-full lg:ml-10 ml-3 border-gray-400">
+        <h2 className='lg:text-3xl text-2xl font-nunito font-bold lg:mt-2 mt-[2rem]'>{project.title}</h2>
+        <p class="overflow-auto font-nunito lg:text-md text-lg font-medium mt-[1rem] ">{project.description}</p>
+        <div className="flex mt-[1rem] lg:mt-[0rem] items-center">
                       <img src={code} alt="Python" className="w-6 h-6 mr-2" />
                       <span className="text-sm text-black font-medium font-nunito ">
                         {languages.map((language) => (
@@ -87,7 +87,7 @@ return (
                         ))}
                       </span>
                     </div>
-                    <div className="flex items-center ">
+                    <div className="flex mt-[2rem] lg:mt-[0rem] items-center ">
                       <img
                         src={domainimg}
                         alt="Web Development"
@@ -101,17 +101,17 @@ return (
                         ))}
                       </span>
                     </div>
-        <p className='mb-2'><span className='font-bold font-nunito text-lg mb-4'>Asking Price: </span> $34</p>
+        <p className='mb-2 mt-[2rem] lg:mt-[0rem]'><span className='font-bold  font-nunito text-lg mb-4'>Asking Price: </span>{`$ ${project.price}`}</p>
       </div>
     </div>
-    <div class="flex w-[150vh] mt-5 border border-rounded">
-  <div class="w-1/2 flex flex-col items-center justify-center border border-rounded bg-color15 bg-opacity-30">
-    <img src= {sendMailGif} class="w-[60vh] h-[60vh]" alt="Icon" />
+    <div class="flex lg:flex-row flex-col lg:w-[150vh] w-full mt-5 border border-rounded">
+  <div class="lg:w-1/2 w-full  flex flex-col items-center justify-center border border-rounded bg-color15 bg-opacity-30">
+    <img src= {sendMailGif} class="lg:w-[60vh] w-[full] lg:h-[60vh] h-[14rem]" alt="Icon" />
     <p class="mt-2 text-center mb-4 font-nunito font-semibold text-color16">Please describe your request in a nutshell!</p>
 
   </div>
-  <div class="w-1/2">
-    <h2 class="text-center py-2 font-nunito text-xl font-bold">Send Request</h2>
+  <div class="lg:w-1/2 w-full">
+    <h2 class="text-center py-2 mt-[1rem] font-nunito text-xl font-bold">Send Request</h2>
     <form class="mt-4 pl-8">
       <div className='mr-4'>
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
@@ -123,11 +123,11 @@ return (
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
         Description
       </label>
-      <textarea value={description} onChange={(e)=> setDescription(e.target.value)} class="appearance-none block w-full h-[40vh] bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text" placeholder="Write a good request proposal for project" />
+      <textarea value={description} onChange={(e)=> setDescription(e.target.value)} class="appearance-none block w-full lg:h-[40vh] h-[12rem] bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text" placeholder="Write a good request proposal for project" />
       </div>
       
 
-<button onClick = {handleSendEmailButton} class="flex ml-[48vh] mb-5 items-center h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
+<button onClick = {handleSendEmailButton} class="flex lg:ml-[48vh] ml-[8rem] mb-5 items-center h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
   <img className='w-7 h-7 pr-1 pl-1' src= {sendMailImg} alt="" />
   <span>Send Mail</span>
 </button>

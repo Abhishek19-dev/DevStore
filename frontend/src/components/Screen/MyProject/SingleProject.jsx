@@ -81,17 +81,17 @@ const SingleProject = ({ project }) => {
   return (
     <>
       {/* <Link to = {`/project/${project._id}`}> */}
-      <div className=" relative container ml-[20vh] z-5 mt-4 mb-4">
-        <div class="border w-[150vh] bg-white rounded-lg shadow-md p-4 ">
-          <div class="flex">
+      <div className=" relative container lg:ml-[20vh] ml-[0.5rem] z-5 mt-4 mb-4">
+        <div class="border lg:w-[150vh] w-[full] bg-white rounded-lg shadow-md p-4 ">
+          <div class="flex lg:flex-row flex-col">
             <img
               src={project.images[0].url}
               alt="Project Image"
-              class="w-[40vh] h-[35vh]"
+              class="lg:w-[40vh] lg:h-[35vh] w-[90%] h-[10rem]"
             />
 
-            <div class="w-2/3 pl-10">
-              <h3 class="text-4xl font-nunito text-color9 font-bold mb-2">
+            <div class="lg:w-2/3 w-full lg:pl-10 pl-1 mt-2">
+              <h3 class="lg:text-4xl text-2xl font-nunito text-color9 font-bold mb-2">
                 {project.title}
               </h3>
               <p class="text-md font-medium font-nunito text-black overflow-hidden line-clamp-2 my-4">
@@ -172,7 +172,7 @@ const SingleProject = ({ project }) => {
                 <div
                   class={
                     deleteProject
-                      ? "border border-gray-300 shadow-lg  bg-black bg-opacity-10  absolute top-[10vh] left-[70vh] flex flex-col items-center justify-center py-4 z-20"
+                      ? "border border-gray-300 shadow-lg  bg-black bg-opacity-50  absolute lg:top-[10vh] lg:left-[70vh] top-[5rem] left-[1rem] flex flex-col items-center justify-center py-4 z-20"
                       : "hidden"
                   }
                 >
@@ -257,15 +257,15 @@ export const SingleProjectForUserProfile = ({ project }) => {
     <>
       <Link to={`/project/${project._id}`}>
         <div className="w-[100%]">
-          <div class="border w-[90%]  bg-white rounded-lg  p-4 ">
-            <div class="flex">
+          <div class="border lg:w-[90%] w-[99%]  bg-white rounded-lg  lg:p-4 p-3 ">
+            <div class="flex lg:flex-row flex-col">
               <img
                 src={project && project.images[0].url}
                 alt="Project Image"
                 class="w-[40vh] h-[35vh]"
               />
-              <div class="w-2/3 pl-10">
-                <h3 class="text-4xl font-nunito text-color9 font-bold mb-2">
+              <div class="lg:w-2/3 w-full lg:pl-10 pl-1">
+                <h3 class="lg:text-4xl text-2xl font-nunito text-color9 font-bold mb-2">
                   {" "}
                   {project && project.title}
                 </h3>

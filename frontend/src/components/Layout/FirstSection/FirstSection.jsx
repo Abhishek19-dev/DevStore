@@ -26,8 +26,8 @@ return (
         <p class="text-color4 text-lg font-nunino">Enter the project you want !</p>
       </div>
       <div class="flex space-x-4">
-        <div class="flex rounded-md overflow-hidden w-full">
-          <input type="text" class="w-full rounded-md px-4 font-nunito text-1.5xl" />
+        <div class="flex rounded-md overflow-hidden lg:w-full w-[90%]">
+          <input type="text" class="lg:w-full  rounded-md px-4 font-nunito text-1.5xl" />
           <button class="bg-indigo-600 text-white px-6 text-lg font-semibold py-4 rounded-r-md">Go</button>
         </div>
         <button class="bg-white px-6 text-lg font-semibold py-4 rounded-md">Clear</button>

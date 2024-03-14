@@ -16,8 +16,9 @@ import projects from "../../../images/projects.png";
 import logout from "../../../images/logout.png";
 import account from "../../../images/account.png";
 import wishlist from "../../../images/wishlist.png";
-import { UilFacebookMessenger } from '@iconscout/react-unicons'
-import { IconButton } from "@chakra-ui/react";
+import { UilFacebookMessenger } from "@iconscout/react-unicons";
+import { Button, IconButton } from "@chakra-ui/react";
+import { UilPlus } from "@iconscout/react-unicons";
 
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
@@ -44,114 +45,93 @@ const NavBar = () => {
   return (
     <>
       {/* <----- MOBILE VERSION -------> */}
-      <nav
-        className=" sticky top-0  scroll-smooth z-999 flex bg-white  border-b-2 border-cyan-100 md:hidden max-w-full justify-between
-     align-center h-min-10 "
-      >
+      <nav className=" sticky scroll-smooth pt-[1rem] lg:hidden flex  lg:mt-[0rem] pl-[1rem] lg:ml-[0rem]  bg-white  top-0  border-b-2 border-cyan-100 md:flex max-w-full h-fit align-center justify-between  z-999">
         <div className="my-auto">
           <h1 className="font-nunito font-bold text-xl ml-1">
             Dev<span className="font-nunito">Store</span>
           </h1>
         </div>
 
-        <div className="flex">
-          <div>
-            {/* SELL BUTTON */}
-            <a
-              href="#"
-              class="box-border mt-3 w-13 md:absolute md:right-3 md:top-3 z-30 inline-flex items-center justify-center w-auto px-8 py-3 overflow-hidden font-bold text-white transition-all duration-300 bg-indigo-600 rounded-md cursor-pointer group ring-offset-2 ring-1 ring-indigo-300 ring-offset-indigo-200 hover:ring-offset-indigo-500 ease focus:outline-none"
-            >
-              <span class="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
-              <span class="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
-              <span class="relative z-20 flex items-center text-sm">
-                <svg
-                  class="relative w-5 h-5 mr-2 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  ></path>
-                </svg>
-                +SELL
-              </span>
-            </a>
-          </div>
-          <div>
-            {/* <-------CART-------> */}
-            <button
-              class="py-4 md:mx-3 md:absolute md:right-[14rem] md:top-0.5 md:bottom-0.3 ml-3 px-1 mt-2 mr-3 relative border-2 border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out"
-              aria-label="Cart"
-            >
-              <svg
-                class="h-6 w-6"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-              </svg>
-              <span class="absolute inset-0 object-right-top -mr-6">
-                <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
-                  0
-                </div>
-              </span>
-            </button>
-          </div>
-          <div className="my-auto mr-1">
+        <Link>
+          <div className="flex  items-center">
             <div>
-              <Hamburger toggled={isOpen} toggle={setOpen} />
+              <Button
+                mr
+                marginRight="1rem"
+                w="8rem"
+                leftIcon={<UilPlus />}
+                colorScheme="blue"
+                variant="solid"
+              >
+                Sell
+              </Button>
             </div>
-            {isOpen && (
-              <div className=" transnform translate-x-2 transition-transform  ease-in duration-700 ">
-                <ul className="absolute antialiased top-[1rem] right-[2rem] ">
-                  <a>{isAuthenticated && <li className="py-2">Login</li>}</a>
-                  <hr />
-                  <a>
-                    <li className="py-2"> My Profile</li>
-                  </a>
-                  <a>
-                    <li className="py-2">Categories</li>
-                  </a>
-                  <a>
-                    <li className="py-2">My Orders</li>
-                  </a>
-                  <a>
-                    <li className="py-2">Contact</li>
-                  </a>
-                  ̀
-                  <a>
-                    <hr />
-                    <li className="py-2">Logout</li>
-                  </a>
-                </ul>
-              </div>
-            )}
+            <div>
+            <Link to="/chats">
+              <button
+                class="lg:mr-8 py-4 ml-3 px-1 mt-2 mr-3 relative border-2 border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out"
+                aria-label="Cart"
+              >
+                <IconButton>
+                  <UilFacebookMessenger colorScheme="blue" />
+                </IconButton>
+
+                <span class="absolute inset-0 object-right-top-[-1rem] -mr-6">
+                  <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
+                    0
+                  </div>
+                </span>
+              </button>
+            </Link>
           </div>
-        </div>
+            <div className="my-auto mr-1">
+              <div>
+                <Hamburger toggled={isOpen} toggle={setOpen} />
+              </div>
+              {isOpen && (
+                <div className=" transnform  translate-x-2 transition-transform  ease-in duration-700 ">
+                  <ul className="absolute bg-white w-[12rem] p-[2rem] antialiased top-[1rem] right-[2rem] ">
+                    <a>{isAuthenticated && <li className="py-2">Login</li>}</a>
+                    <hr />
+                    <a>
+                      <li className="py-2"> My Profile</li>
+                    </a>
+                    <a>
+                      <li className="py-2">Categories</li>
+                    </a>
+                    <a>
+                      <li className="py-2">My Orders</li>
+                    </a>
+                    <a>
+                      <li className="py-2">Contact</li>
+                    </a>
+                    ̀
+                    <a>
+                      <hr />
+                      <li className="py-2">Logout</li>
+                    </a>
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+        </Link>
       </nav>
 
+
       {/* <-------- DESKTOP VERSION -------> */}
-      <nav className=" sticky scroll-smooth   bg-white top-0 hidden border-b-2 border-cyan-100 md:flex max-w-full h-fit align-center justify-between  z-999">
+      <nav className=" sticky scroll-smooth mt-[1rem] hidden  lg:mt-[0rem] ml-[1rem] lg:ml-[0rem]  bg-white top-0  border-b-2 border-cyan-100 md:flex max-w-full h-fit align-center justify-between  z-999">
         <div className="flex">
           <img
-            className="w-10 h-10 my-auto md:hidden lg:block lg:mx-2"
+            className="w-10 h-10 my-auto hidden lg:block lg:mx-2"
             src={Logo}
           ></img>
-          <h2 className="my-auto font-serif font-bold text-3xl md:p-3 lg:p-0 lg:4xl">
+          <h2 className="my-auto  font-serif font-bold text-3xl md:p-3 lg:p-0 lg:4xl">
             Dev<span className="">Store</span>
           </h2>
         </div>
         <div>
-          <ul className="flex align-center my-auto">
+          <ul className="lg:flex hidden align-center my-auto">
             <Link to="/">
               <li className="lg:px-4  py-6 px-1.5">HOME</li>
             </Link>
@@ -167,7 +147,7 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="flex items-center">
-          <div>
+          <div className="lg:flex hidden">
             <div
               data-open="false"
               onMouseEnter={() => {
@@ -320,22 +300,11 @@ const NavBar = () => {
                 class="lg:mr-8 py-4 ml-3 px-1 mt-2 mr-3 relative border-2 border-transparent text-gray-800 rounded-full hover:text-gray-400 focus:outline-none focus:text-gray-500 transition duration-150 ease-in-out"
                 aria-label="Cart"
               >
-                {/* <svg
-                  class="h-6 w-6"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M20 6L4 6"></path>
-                  <path d="M4 12L20 12"></path>
-                  <path d="M4 18L11 18"></path>
-                </svg> */}
-                <IconButton><UilFacebookMessenger /></IconButton>
+                <IconButton>
+                  <UilFacebookMessenger colorScheme="blue" />
+                </IconButton>
 
-                <span class="absolute inset-0 object-right-top -mr-6">
+                <span class="absolute inset-0 object-right-top-[-1rem] -mr-6">
                   <div class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white">
                     0
                   </div>
@@ -343,29 +312,18 @@ const NavBar = () => {
               </button>
             </Link>
           </div>
+
           <div>
             <Link to="/sell">
-              <div class="box-border lg:mr-8 z-30 inline-flex items-center justify-center w-auto px-8 py-3 overflow-hidden font-bold text-white transition-all duration-300 bg-indigo-600 rounded-md cursor-pointer group ring-offset-2 ring-1 ring-indigo-300 ring-offset-indigo-200 hover:ring-offset-indigo-500 ease focus:outline-none">
-                <span class="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
-                <span class="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
-                <span class="relative z-20 flex items-center text-sm">
-                  <svg
-                    class="relative w-5 h-5 mr-2 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    ></path>
-                  </svg>
-                  +SELL
-                </span>
-              </div>
+              <Button
+                marginRight="1rem"
+                w="8rem"
+                leftIcon={<UilPlus />}
+                colorScheme="blue"
+                variant="solid"
+              >
+                Sell
+              </Button>
             </Link>
           </div>
         </div>

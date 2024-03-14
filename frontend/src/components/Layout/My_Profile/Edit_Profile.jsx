@@ -165,16 +165,16 @@ const EditProfile = () => {
 
   return (
     <>
-      <div class="flex bg-color17  mb-10">
+      <div class="flex lg:flex-row flex-col bg-color17  mb-10">
         <div className="flex flex-col">
-          <div class="w-[80vh] h-fit mb-10 ml-[9vh] mt-[7vh] rounded-lg shadow-lg bg-white  border">
+          <div class="lg:w-[80vh] w-[24rem] h-fit mb-10 lg:ml-[9vh] ml-[1rem] mt-[7vh] rounded-lg shadow-lg bg-white  border">
             <div class="flex flex-col">
               <div class="flex  p-4">
                 <div>
                   <img
                     src={avatar ? avatar.url : ""}
                     alt="profile Pic"
-                    className="w-[28vh] h-[28vh] rounded-md mr-4"
+                    className="lg:w-[28vh] w-[12rem] h-[12rem] lg:h-[28vh] rounded-md mr-4"
                   />
                 </div>
                 <div className="mt-5">
@@ -182,7 +182,7 @@ const EditProfile = () => {
                     {userName}
                   </span>
                   {/* to change and edit bio */}
-                  <p className="p-3 font-lg text-md font-nunito text-black">
+                  <p className="lg:p-3 p-[0.1rem] font-lg text-md font-nunito text-black">
                     {editBio ? (
                       <textarea
                         value={bio}
@@ -198,9 +198,6 @@ const EditProfile = () => {
                         .map((line, index) => <p key={index}>{line}</p>)
                     )}
                   </p>
-                  <button class="bg-indigo-500 mx-2 text-white rounded px-2 py-1 mt-2">
-                    Edit Photo
-                  </button>
                   <button
                     onClick={handleEditBio}
                     class="bg-indigo-500 mx-2 text-white rounded px-2 py-1 mt-2"
@@ -211,7 +208,7 @@ const EditProfile = () => {
               </div>
             </div>
           </div>
-          <div className="w-[80vh] h-fit mb-10 ml-[9vh] mt-[2vh] rounded-lg shadow-lg bg-white  border">
+          <div className="lg:w-[80vh] w-[24rem] h-fit mb-10 lg:ml-[9vh] ml-[0.7rem] mt-[2vh] rounded-lg shadow-lg bg-white  border">
             <h2 className="text-3xl font-nunito text-white font-semibold bg-indigo-500 mb-4 py-3 text-center">
               Update Password
             </h2>
@@ -228,7 +225,7 @@ const EditProfile = () => {
                   onChange={(e) => setOldPassword(e.target.value)}
                   type={isOldPasswordVisible ? "text" : "password"}
                   id="name"
-                  className="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[70vh] mx-4 my-2"
+                  className="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm lg:w-[70vh] w-[21rem] mx-4 my-2"
                 />
               </div>
               <div className="mb-4">
@@ -243,7 +240,7 @@ const EditProfile = () => {
                   onChange={(e) => setNewPassword(e.target.value)}
                   type={isNewPasswordVisible ? "text" : "password"}
                   id="name"
-                  className="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[70vh] mx-4 my-2"
+                  className="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm lg:w-[70vh] w-[21rem] mx-4 my-2"
                 />
               </div>
               <div className="mb-4">
@@ -258,13 +255,13 @@ const EditProfile = () => {
                   onChange={(e) => setConfirmNewPassword(e.target.value)}
                   type="text"
                   id="name"
-                  className="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[70vh] mx-4 my-2"
+                  className="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm lg:w-[70vh] w-[21rem] mx-4 my-2"
                 />
               </div>
 
               <button
                 onClick={handlePasswordUpdate}
-                class="ml-[60vh] w-fit mx-[30vh] flex items-center justify-center bg-indigo-500 text-white rounded mb-4 px-3 py-1 mt-1"
+                class="lg:ml-[60vh] ml-[16rem] w-fit mx-[30vh] flex items-center justify-center bg-indigo-500 text-white rounded mb-4 px-3 py-1 mt-1"
               >
                 {updatePasswordLoading ? (
                   <svg
@@ -285,7 +282,7 @@ const EditProfile = () => {
             </form>
           </div>
         </div>
-        <div className="w-[90vh] h-fit  ml-[3vh] mt-[7vh] rounded-lg shadow-lg bg-white  border">
+        <div className="lg:w-[90vh] w-[25rem] h-fit  lg:ml-[3vh] ml-[0.1rem] mt-[7vh] rounded-lg shadow-lg bg-white  border">
           <h2 className="text-3xl font-nunito text-white font-semibold bg-indigo-500 mb-4 py-3 text-center">
             Edit Details
           </h2>
@@ -302,7 +299,7 @@ const EditProfile = () => {
                 onChange={(e) => setName(e.target.value)}
                 type="text"
                 id="name"
-                className="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[85vh] mx-4 my-2"
+                className="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm lg:w-[85vh] w-[23rem] mx-4 my-2"
               />
             </div>
             <div class="mb-4">
@@ -317,7 +314,7 @@ const EditProfile = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 id="email"
-                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[85vh] mx-4 my-2"
+                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm lg:w-[85vh] w-[23rem] mx-4 my-2"
               />
             </div>
             <div class="mb-4">
@@ -332,7 +329,7 @@ const EditProfile = () => {
                 onChange={(e) => setPhoneNo(e.target.value)}
                 type="tel"
                 id="phone"
-                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[85vh] mx-4 my-2"
+                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm lg:w-[85vh] w-[23rem] mx-4 my-2"
               />
             </div>
             <div class="mb-4">
@@ -347,7 +344,7 @@ const EditProfile = () => {
                 onChange={(e) => setWhatsAppNo(e.target.value)}
                 type="tel"
                 id="whatsapp"
-                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[85vh] mx-4 my-2"
+                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm lg:w-[85vh] w-[23rem] mx-4 my-2"
               />
             </div>
             <div class="mb-4">
@@ -362,7 +359,7 @@ const EditProfile = () => {
                 onChange={(e) => setAddress(e.target.value)}
                 type="text"
                 id="address"
-                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[85vh] mx-4 my-2"
+                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm lg:w-[85vh] w-[23rem] mx-4 my-2"
               />
             </div>
             <div class="mb-4">
@@ -377,7 +374,7 @@ const EditProfile = () => {
                 onChange={(e) => setLinkedURL(e.target.value)}
                 type="text"
                 id="address"
-                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[85vh] mx-4 my-2"
+                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm lg:w-[85vh] w-[23rem] mx-4 my-2"
               />
             </div>
               
@@ -393,7 +390,7 @@ const EditProfile = () => {
                 onChange={(e) => setGithubURL(e.target.value)}
                 type="text"
                 id="address"
-                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[85vh] mx-4 my-2"
+                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm lg:w-[85vh] w-[23rem] mx-4 my-2"
               />
             </div>
            
@@ -409,7 +406,7 @@ const EditProfile = () => {
                 onChange={(e) => setInstagramURL(e.target.value)}
                 type="text"
                 id="address"
-                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm w-[85vh] mx-4 my-2"
+                class="border bg-gradient-to-t from-slate-100 to-blue-50 border-gray-300 py-2 px-4 rounded-sm lg:w-[85vh] w-[23rem] mx-4 my-2"
               />
             </div>
 
@@ -444,7 +441,7 @@ const EditProfile = () => {
 
           <button
             onClick={saveChanges}
-            class=" ml-[70vh] w-fit flex items-center justify-center  bg-indigo-500 text-white rounded mb-4 px-3 py-1"
+            class=" lg:ml-[70vh] ml-[16rem] w-fit flex items-center justify-center  bg-indigo-500 text-white rounded mb-4 px-3 py-1"
           >
             {editProfileLoading ? (
               <svg

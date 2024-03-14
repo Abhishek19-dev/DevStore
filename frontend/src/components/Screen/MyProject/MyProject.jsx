@@ -24,7 +24,7 @@ const MyProject = () => {
         <div className="">
           {projects.length > 0 ? (
             <div className="flex mt-[5vh]">
-              <h2 class="text-5xl mb-11  text-center ml-[35rem] font-nunito font-semibold  text-color7">
+              <h2 class="text-5xl mb-11  text-center lg:ml-[35rem] ml-[3rem] font-nunito font-semibold  text-color7">
                 Your Projects
               </h2>
               <div class="flex justify-center">

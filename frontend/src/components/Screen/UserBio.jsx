@@ -30,26 +30,26 @@ const UserBio = () => {
   return (
     <>
       <Box
-        p="2rem"
+        p={{base:'1rem',lg:"2rem"}}
         display="flex"
         flexDirection="column"
         bg="#eff3f6"
         w="100%"
-        height="110vh"
+        height={{base:'fit-content',lg:"110vh"}}
       >
         <Box
           mx="auto"
-          w="80%"
+          w={{base:'100%',lg:"80%"}}
           h="45%"
           bg="white"
+          p={{base:"1rem",lg:"0rem"}}
           display="flex"
-          flexDirection="row"
-          alignItems="center
-        "
+          flexDirection={{lg:"row",base:"column"}}
+          alignItems={{base:'',lg:"center"}}
           justifyContent="center"
         >
           <Box
-            width="30%"
+            width={{base:'80%',lg:"30%"}}
             mr="2rem"
             border="0.1px"
             borderRadius="lg"
@@ -69,7 +69,7 @@ const UserBio = () => {
             justifyContent="space-between"
             p={2}
             flexDirection="column"
-            w="50%"
+            w={{base:'95%',lg:"50%"}}
             h="90%"
           >
             <Text fontSize="3rem" fontFamily="nunito sans">
@@ -137,11 +137,11 @@ const UserBio = () => {
           </Box>
         </Box>
         <Divider bg="black" color="black" mt="2rem" />
-        <Box w="80%" h="55%" mx="auto" display="flex" flexDirection="column">
+        <Box w={{base:'92%',lg:"80%"}} h="55%" mx={{base:'0rem',lg:"auto"}} display="flex" flexDirection="column">
           <Text marginLeft="2rem" fontFamily="Nunito" fontSize="3rem">
             His Projects
           </Text>
-          <Stack pl="2rem" w="100%" h="100%" overflowY="hidden">
+          <Stack pl={{base:'0.1rem',lg:"2rem"}} w="100%" h="100%" overflowY="hidden">
             {projects &&
               projects.length > 0 &&
               projects.map((project) => {

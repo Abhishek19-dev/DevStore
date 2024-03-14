@@ -73,8 +73,8 @@ useEffect(()=>{
 
 return (
     <>
-     <section class="bg-color17  pt-[5vh] mb-10 flex">
-  <div class="w-[100vh] ml-10 mr-5 border shadow-lg rounded-lg">
+     <section class="bg-color17  pt-[5vh] mb-10 flex lg:flex-row flex-col">
+  <div class="lg:w-[100vh] w-[full] lg:ml-10 ml-1 mr-5 border shadow-lg rounded-lg">
   <h2 className="text-3xl font-nunito text-white w-full font-semibold bg-indigo-500 mb-4 py-3 text-center">
               Update Project
             </h2>
@@ -83,7 +83,7 @@ return (
                 <SkeletonCircle size='10' />
                 <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
               </Box> :  <form action="#">
-          <div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
+          <div class="grid gap-4 mb-4 lg:grid-cols-2 lg:gap-6  sm:mb-5">
               <div class="sm:col-span-2">
                   <label for="name" class="block mb-2 ml-6 text-sm font-medium text-gray-900 ">Project Title</label>
                   <input type="text" name="name" id="name" class="bg-gray-50 border ml-6 border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[80%] p-2.5   dark:focus:ring-primary-500 dark:focus:border-primary-500" value= {title}
@@ -91,16 +91,16 @@ return (
               </div>
               <div class="w-full">
                   <label for="brand" class="block mb-2 ml-6 text-sm font-medium text-gray-900 ">Languages</label>
-                  <input type="text" name="brand" id="brand" class="bg-gray-50 ml-6 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[80%] p-2.5 dark:focus:ring-primary-500 dark:focus:border-primary-500" value={languages} onChange={(e)=> setLanguages(e.target.value)} placeholder="HTML , React , etc" required="" />
+                  <input type="text" name="brand" id="brand" class="bg-gray-50 border ml-6 border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[80%] p-2.5   dark:focus:ring-primary-500 dark:focus:border-primary-500" value={languages} onChange={(e)=> setLanguages(e.target.value)} placeholder="HTML , React , etc" required="" />
               </div>
               <div class="w-full">
-                  <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Category</label>
-                  <input type="text" name="category" id="category" class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[80%] p-2.5  dark:focus:ring-primary-500 dark:focus:border-primary-500" value={domain}
+                  <label for="category" class="block mb-2 ml-6 text-sm font-medium text-gray-900 ">Category</label>
+                  <input type="text" name="category" id="category" class="bg-gray-50 border ml-6 border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[80%] p-2.5   dark:focus:ring-primary-500 dark:focus:border-primary-500" value={domain}
                   onChange={(e)=>setDomain(e.target.value)} placeholder="Web Dev etc" required="" />
               </div>
               <div>
                   <label for="price" class="block mb-2 ml-6 text-sm font-medium text-gray-900 ">Price</label>
-                  <input type="number" name="number" id="number" class=" resize-none appearance-none bg-gray-50 border ml-6 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[40vh] p-2.5 dark:focus:ring-primary-500 dark:focus:border-primary-500" value={price} onChange={(e)=>setPrice(e.target.value)} placeholder="Enter Number" required="" />
+                  <input type="number" name="number" id="number" class="bg-gray-50 border ml-6 border-gray-300 text-black text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[80%] p-2.5   dark:focus:ring-primary-500 dark:focus:border-primary-500" value={price} onChange={(e)=>setPrice(e.target.value)} placeholder="Enter Number" required="" />
               </div>
             
               <div class="sm:col-span-2">
@@ -139,7 +139,7 @@ return (
             }
      
   </div>
-  <img src= {editDetailsPhotos} alt="" className='w-[100vh]'/>
+  <img src= {editDetailsPhotos} alt="" className='lg:w-[100vh] w-[full] m-2'/>
 </section>
     </>
 )

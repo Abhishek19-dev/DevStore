@@ -26,6 +26,11 @@ import UserBio from './components/Screen/UserBio';
 
 function App() {
 // const navigate = useNavigate()
+const [reqString, setReqString] = useState("");
+  const [tags, setTags] = useState("");
+  const [selectedDomains, setSelectedDomains] = useState([]);
+  const [selectedLanguages, setSelectedLanguages] = useState([]);
+
 
   return (
     <>
@@ -54,7 +59,7 @@ function MainLayout() {
     <>
      <NavBar />
       <Routes>
-        <Route path="/" element={<Home  />} />
+        <Route path="/" element={<Home />} />
         <Route path="/project/:id" element={<ProjectDetails />} />
         <Route path="/sell" element= {<Sell />} />
         <Route path="/myProfile" element= {<EditProfile />}/>
@@ -65,7 +70,7 @@ function MainLayout() {
         <Route path="/thankYou" element= {<ThankYou />}/>
         {/* <Route path="/projectReviews/:id" element= {<Getreviews />} /> */}
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
