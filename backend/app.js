@@ -9,7 +9,13 @@ const bodyParser = require('body-parser')
 // Middleware to parse JSON data from the request body
 app.use(express.json())
 
-app.use(cors());
+app.use(cors(
+    {
+        origin:["http://localhost:3000/"],
+        methods:["POST","GET"],
+        credentials:true
+    }
+));
 
 //middleware should be used above routes inports
 app.use(cookieParser())
