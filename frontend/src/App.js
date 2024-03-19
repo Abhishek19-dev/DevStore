@@ -21,16 +21,14 @@ import ResetPassword from './components/Screen/Auth/ResetPassword';
 import { useState } from 'react';
 import ChatScreen from './components/Screen/ChatScreen/ChatScreen';
 import UserBio from './components/Screen/UserBio';
+import { ProjectFilterContext } from './components/context/useContext';
+import { useDispatch } from 'react-redux';
 // import Getreviews from './components/Reviews';
 
 
 function App() {
-// const navigate = useNavigate()
-const [reqString, setReqString] = useState("");
-  const [tags, setTags] = useState("");
-  const [selectedDomains, setSelectedDomains] = useState([]);
-  const [selectedLanguages, setSelectedLanguages] = useState([]);
 
+ 
 
   return (
     <>

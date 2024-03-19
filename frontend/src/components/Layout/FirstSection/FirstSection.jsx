@@ -1,6 +1,15 @@
- import React, { Fragment } from 'react'; 
+ import React, { Fragment, useContext } from 'react'; 
  import FirstSectionImg from "../../../images/2nd.gif"
+import { ProjectFilterContext } from '../../context/useContext';
+import { Link } from 'react-router-dom';
  const FirstSection = () =>{
+  const {tags ,handleChangeTags ,setTags} = useContext(ProjectFilterContext)
+
+  const handleClearButton =(e)=>{
+    e.preventDefault()
+    setTags("")
+  }
+
 return (
     <Fragment>
       {/* <div className=" hidden lg:flex flex-row-reverse max-w-full max-h-[100vh] bg-gradient-to-t from-slate-50 to-blue-100 "> */}
@@ -27,10 +36,13 @@ return (
       </div>
       <div class="flex space-x-4">
         <div class="flex rounded-md overflow-hidden lg:w-full w-[90%]">
-          <input type="text" class="lg:w-full  rounded-md px-4 font-nunito text-1.5xl" />
-          <button class="bg-indigo-600 text-white px-6 text-lg font-semibold py-4 rounded-r-md">Go</button>
+          <input  value={tags}
+            onChange={handleChangeTags} type="text" class="lg:w-full  rounded-md px-4 font-nunito text-1.5xl" />
+            <Link to='/projects'>
+            <button class="bg-indigo-600 text-white px-6 text-lg font-semibold py-4 rounded-r-md">Go</button>
+            </Link>
         </div>
-        <button class="bg-white px-6 text-lg font-semibold py-4 rounded-md">Clear</button>
+        <button onClick={handleClearButton} class="bg-white px-6 text-lg font-semibold py-4 rounded-md">Clear</button>
       </div>
     </div>
   </form>

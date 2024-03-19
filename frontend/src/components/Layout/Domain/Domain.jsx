@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; 
+import React, { useContext, useState } from 'react'; 
 
 
 import cplus from "../../../images/c++.png"
@@ -6,9 +6,15 @@ import python from "../../../images/python.png"
 import java from "../../../images/java.png"
 import  javascript from "../../../images/java-script.png"
 import  reactJs from "../../../images/react.png"
+import { ProjectFilterContext } from '../../context/useContext';
+import { Link } from 'react-router-dom';
 
 
 const Categories = () =>{
+
+  const {reqString, setReqString ,tags, setTags ,selectedDomains, setSelectedDomains ,selectedLanguages, setSelectedLanguages ,handleChangeTags ,handleSearchProject,domains,languagesCat} = useContext(ProjectFilterContext)
+
+
 
   const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -43,37 +49,42 @@ return (
    <h2 class=" hidden md:block text-4xl font-bold font-nunito mb-3 pl-3 ">Popular <span className="text-color6">Languages</span></h2>
    <div class=" hidden md:grid  gird-cols-1  md:grid-cols-3 md:gap-2 lg:grid-cols-5 lg:gap-5">
       {/* Category 1 */}
-     <div class="bg-color17   p-4 border-color7  hover:scale-105 transition-transform">
+      <Link to='/projects'>
+     <div  onClick={(e) => handleSearchProject("java", "languages", true)} class="bg-color17   p-4 border-color7  hover:scale-105 transition-transform">
        <img src= {java} alt="Category 1" class="w-full h-52 object-cover mb-1 border-2 rounded-lg bg-gradient-to-t from-slate-50 to-blue-100" />
        <h3 class="text-lg font-bold text-gray-800 ml-4">Java</h3>
-
      </div>
+     </Link>
      
      {/* <!-- Category 2 --> */}
-     <div class="bg-color17  rounded-lg p-4 hover:scale-105 transition-transform">
+     <Link to='/projects'>
+     <div onClick={(e) => handleSearchProject("c++", "languages", true)} class="bg-color17  rounded-lg p-4 hover:scale-105 transition-transform">
        <img src= {cplus} alt="Category 2" class="w-full h-52 object-cover mb-1 border-2 rounded-lg bg-gradient-to-t from-slate-50 to-blue-100" />
        <h3 class="text-lg font-bold text-gray-800 ml-6">C++</h3>
-
      </div>
+     </Link>
      
      {/* <!-- Category 3 --> */}
-     <div class="bg-color17  rounded-lg p-4 hover:scale-105 transition-transform">
+     <Link to='/projects'>
+     <div onClick={(e) => handleSearchProject("Python", "languages", true)} class="bg-color17  rounded-lg p-4 hover:scale-105 transition-transform">
        <img src= {python}  alt="Category 3" class="w-full h-52 object-cover mb-1 border-2 rounded-lg bg-gradient-to-t from-slate-50 to-blue-100" />
        <h3 class="text-lg font-bold text-gray-800 ml-20">Python</h3>
-
      </div>
+     </Link>
      {/* Category 4 */}
-     <div class="bg-color17 rounded-lg p-4 border-color7 border-1 hover:scale-105 transition-transform">
+     <Link to='/projects'>
+     <div onClick={(e) => handleSearchProject("React", "languages", true)} class="bg-color17 rounded-lg p-4 border-color7 border-1 hover:scale-105 transition-transform">
        <img src= {reactJs} alt="Category 1" class="w-full h-52 object-cover mb-1 border-2 rounded-lg bg-gradient-to-t from-slate-50 to-blue-100" />
        <h3 class="text-lg  font-bold text-gray-800 ml-8">React</h3>
-
      </div>
+     </Link>
      {/* Category 5 */}
-     <div class="bg-color17  rounded-lg p-4 border-color7 border-1 hover:scale-105 transition-transform">
+     <Link to='/projects'>
+     <div onClick={(e) => handleSearchProject("Next Js", "languages", true)} class="bg-color17  rounded-lg p-4 border-color7 border-1 hover:scale-105 transition-transform">
        <img src= {javascript} alt="Category 1" class="w-full h-52 object-cover mb-1 border-2 rounded-lg bg-gradient-to-t from-slate-50 to-blue-100" />
-       <h3 class="text-lg font-bold text-gray-800 ml-5">Javascript</h3>
-
+       <h3 class="text-lg font-bold text-gray-800 ml-5">Next Js</h3>
      </div>
+     </Link>
    </div>
  </div>
 </div>
