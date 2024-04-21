@@ -41,7 +41,7 @@ return (
       }
    </div> : <div className='flex - flex-col items-center mx-auto'><h1 className='text-6xl font-nunito mx-auto my-[3rem]'> No products found !</h1>
 
-   <Button size='md' rightIcon={<UilArrowRight />} colorScheme='teal' variant='outline'>
+   <Button onClick={clearAllFilters} size='md' rightIcon={<UilArrowRight />} colorScheme='teal' variant='outline'>
     View All Projects
   </Button></div>
     )

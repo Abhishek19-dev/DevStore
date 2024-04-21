@@ -102,7 +102,7 @@ const Register = () => {
   return (
     <>
       {/* <section class="bg-gradient-to-t flex flex-col items-center from-slate-50 to-blue-100 h-full"> */}
-      <section class="bg-color17 flex flex-col items-center  h-full">
+      <section class="bg-color17  flex flex-col items-center  h-full">
         <div className="pt-[3rem]">
           <p class="font-nunito  flex flex-col justify-between  h-[full] font-semibold text-lg p-[1rem]    text-black">
             <span class="text-color7  ml-[5rem] md:ml-[20rem] lg:ml-[14rem] mb-[1.5rem]   font-nunito font-bold text-3xl md:text-5xl lg:text-7xl ">
@@ -179,26 +179,6 @@ const Register = () => {
                     type="file"
                   />
                 </div>
-                {/* <div
-                  class={error?"w-[85vh] mx-4 my-2 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" : "hidden"}
-                  role="alert"
-                >
-                  <strong class="font-bold">Alert! </strong>
-                  <span class="block sm:inline">
-                    {error}
-                  </span>
-                  <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                    <svg
-                      class="fill-current h-6 w-6 text-red-500"
-                      role="button"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                    >
-                      <title>Close</title>
-                      <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
-                    </svg>
-                  </span>
-                </div> */}
                 <div class="flex  p-[1rem] justify-between mb-4">
                   {
                     registerUserLoading ? <button disabled="" type="button"  class="bg-color9 text-white font-nunito font-semibold mr-[2.5rem] px-8  lg:py-2 lg:px-8 rounded-lg  lg:mr-2 ml-1 md:ml-8 ">

@@ -17,7 +17,7 @@ root.render(
     <Provider store = {store}>
     <Router>
       <ProjectFilterProvider>
-    <App  />
+       <App  />
     </ProjectFilterProvider>
     </Router>
 

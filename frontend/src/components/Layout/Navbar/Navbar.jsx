@@ -45,20 +45,20 @@ const NavBar = () => {
   return (
     <>
       {/* <----- MOBILE VERSION -------> */}
-      <nav className=" sticky scroll-smooth pt-[1rem] lg:hidden flex  lg:mt-[0rem] pl-[1rem] lg:ml-[0rem]  bg-white  top-0  border-b-2 border-cyan-100 md:flex max-w-full h-fit align-center justify-between  z-999">
-        <div className="my-auto">
-          <h1 className="font-nunito font-bold text-xl ml-1">
+      {/* <nav className=" sticky scroll-smooth pt-[1rem] md:hidden w-[23rem] flex bg-black h-[4.5rem]  border-b-2 border-cyan-100  z-999"> */}
+      <div className=" pt-[1rem] md:hidden w-[23rem] flex bg-white h-[4.5rem]  border-b-2 border-cyan-100  z-999">
+        <div className="w-full h-full flex items-center flex-row">
+          <Link to='/'>
+          <h1 className=" ont-nunito font-bold text-xl ml-1">
             Dev<span className="font-nunito">Store</span>
           </h1>
-        </div>
-
-        <Link>
-          <div className="flex  items-center">
+          </Link>
+      <Link to='/sell'>
+          <div className="flex ml-[2rem] w-full h-full items-center">
             <div>
               <Button
-                mr
-                marginRight="1rem"
-                w="8rem"
+                marginRight={{base:'0.1rem',md:"1rem"}}
+                w={{base:'7rem',md:"8rem"}}
                 leftIcon={<UilPlus />}
                 colorScheme="blue"
                 variant="solid"
@@ -116,11 +116,13 @@ const NavBar = () => {
             </div>
           </div>
         </Link>
-      </nav>
+        </div>
+      {/* </nav> */}
+      </div>
 
 
       {/* <-------- DESKTOP VERSION -------> */}
-      <nav className=" sticky scroll-smooth mt-[1rem] hidden  lg:mt-[0rem] ml-[1rem] lg:ml-[0rem]  bg-white top-0  border-b-2 border-cyan-100 md:flex max-w-full h-fit align-center justify-between  z-999">
+      <nav className=" sticky scroll-smooth mt-[1rem] hidden lg:mt-[0rem] ml-[1rem] lg:ml-[0rem]  bg-white top-0  border-b-2 border-cyan-100 md:flex max-w-full h-fit align-center justify-between  z-999">
         <div className="flex">
           <img
             className="w-10 h-10 my-auto hidden lg:block lg:mx-2"
