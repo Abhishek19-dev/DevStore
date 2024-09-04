@@ -5,7 +5,7 @@ import { isMessageSendByUser } from './getChatUtils';
  
  const MessageBox = ({message}) =>{
     const { user } = useSelector((state) => state.userDetails);
-    const isMessageSendByUserValue =  isMessageSendByUser(message , user)
+    const isMessageSendByUserValue =  user ? isMessageSendByUser(message , user) :"";
     
 return (
     <>

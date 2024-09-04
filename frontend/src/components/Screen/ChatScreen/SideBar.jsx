@@ -4,7 +4,9 @@ import { useSelector } from "react-redux";
 
 const SideBar = ({ selectedChat, setSelectedChat, chat ,reqUser,setReqUser}) => {
   const { user } = useSelector((state) => state.userDetails);
+  console.log("User inside",user)
   const requiredUser = getSideBarUser(user, chat);
+  console.log("Rquired User",requiredUser)
   setReqUser(requiredUser)
   console.log("req user",reqUser)
 

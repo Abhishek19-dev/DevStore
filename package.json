@@ -5,8 +5,9 @@
   "main": "backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node backend/server.js",
-    "dev": " nodemon backend/server.js"
+    "start": "NODE_ENV= production node backend/server.js",
+    "dev": "NODE_ENV= development nodemon backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "",
   "license": "ISC",
@@ -34,5 +35,8 @@
     "sharp": "^0.32.5",
     "socket.io": "^4.7.4",
     "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

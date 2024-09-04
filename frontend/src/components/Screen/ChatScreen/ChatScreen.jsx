@@ -75,69 +75,71 @@ const ChatScreen = () => {
         </div>
         {/* <!-- end message --> */}
 
-        <div className="w-2/5 py-[5rem] border-l-2 px-5">
-          <div className="flex flex-col">
-            <div className="font-semibold text-xl py-4 text-center">
-              {reqUser ? reqUser.name : ""}
-            </div>
-            <img
-              src={reqUser.avatar ? reqUser.avatar.url : ""}
-              className="object-cover rounded-xl h-64"
-              alt=""
-            />
-            <div className="font-semibold py-4">
-              Joined{" "}
-              {reqUser ? dateFormat(reqUser.createdAt, "mmmm dS, yyyy") : ""}
-            </div>
-            <div className="font-light">
-              {reqUser && reqUser.bio != "" ? reqUser.bio : "No description"}
-            </div>
-            <div className="flex mt-[1.5rem] flex-row ">
-              <Link to={reqUser ? reqUser.linkedURL :""}>
-              <IconButton
-                marginRight="1rem"
-                isRound={true}
-                isDisabled={reqUser && reqUser.linkedURL ==="" ? true:false}
-                variant="solid"
-                colorScheme="teal"
-                aria-label="Done"
-                fontSize="20px"
-                icon={<UilLinkedin />}
-              />
-              </Link>
-             <Link to={reqUser ? reqUser.instagramURL :""}>
-             <IconButton
-                isRound={true}
-                marginRight="1rem"
-                isDisabled={reqUser && reqUser.instagramURL ==="" ? true:false}
-                variant="solid"
-                colorScheme="teal"
-                aria-label="Done"
-                fontSize="20px"
-                icon={<UilInstagramAlt />}
-              />
-             </Link>
-           
-           <Link to={reqUser ? reqUser.githubURL :""}>
-           <IconButton
-           isRound={true}
-           variant="solid"
-           isDisabled={reqUser && reqUser.githubURL ==="" ? true:false}
-           colorScheme="teal"
-           aria-label="Done"
-           fontSize="20px"
-           icon={<UilGithub />}
-         />
-           </Link>
-              
-            </div>
-            <Link to={`/userBio/${reqUser._id}`}>
-            <Button marginTop='1rem' colorScheme="teal" variant="outline">
-              View Full Profile
-            </Button>
-            </Link>
+       {
+        selectedChat ?  <div className="w-2/5 py-[5rem] border-l-2 px-5">
+        <div className="flex flex-col">
+          <div className="font-semibold text-xl py-4 text-center">
+            {reqUser ? reqUser.name : ""}
           </div>
+          <img
+            src={reqUser.avatar ? reqUser.avatar.url : ""}
+            className="object-cover rounded-xl h-64"
+            alt=""
+          />
+          <div className="font-semibold py-4">
+            Joined{" "}
+            {reqUser ? dateFormat(reqUser.createdAt, "mmmm dS, yyyy") : ""}
+          </div>
+          <div className="font-light">
+            {reqUser && reqUser.bio != "" ? reqUser.bio : "No description"}
+          </div>
+          <div className="flex mt-[1.5rem] flex-row ">
+            <Link to={reqUser ? reqUser.linkedURL :""}>
+            <IconButton
+              marginRight="1rem"
+              isRound={true}
+              isDisabled={reqUser && reqUser.linkedURL ==="" ? true:false}
+              variant="solid"
+              colorScheme="teal"
+              aria-label="Done"
+              fontSize="20px"
+              icon={<UilLinkedin />}
+            />
+            </Link>
+           <Link to={reqUser ? reqUser.instagramURL :""}>
+           <IconButton
+              isRound={true}
+              marginRight="1rem"
+              isDisabled={reqUser && reqUser.instagramURL ==="" ? true:false}
+              variant="solid"
+              colorScheme="teal"
+              aria-label="Done"
+              fontSize="20px"
+              icon={<UilInstagramAlt />}
+            />
+           </Link>
+         
+         <Link to={reqUser ? reqUser.githubURL :""}>
+         <IconButton
+         isRound={true}
+         variant="solid"
+         isDisabled={reqUser && reqUser.githubURL ==="" ? true:false}
+         colorScheme="teal"
+         aria-label="Done"
+         fontSize="20px"
+         icon={<UilGithub />}
+       />
+         </Link>
+            
+          </div>
+          <Link to={`/userBio/${reqUser._id}`}>
+          <Button marginTop='1rem' colorScheme="teal" variant="outline">
+            View Full Profile
+          </Button>
+          </Link>
         </div>
+      </div> : ""
+       }
       </div>
     </div>
   );

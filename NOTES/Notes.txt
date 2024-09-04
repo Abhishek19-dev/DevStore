@@ -6,6 +6,13 @@ terminal mei npm i express mongoose dotenv
 server.js mei app naam ka server banaya aur export kita
 app.js mei server banaya 
 
+
+//HOW TO SETUP ERROR
+1.UTILS - Mei errohandler.js
+2.MIDDLEWARE - Mei error.js
+3.app.js Mei import middleware (app.use(errormiddleware))
+4. MIDDLEWARE MEI catchAsyncError.js 
+
 backend mei config naam ka folder ke ander config rakha
 
 ab config.dotenv ko connect krne ke liye dotenv kiya syntax iss:- dotenv ke variable ko use krne ke lite

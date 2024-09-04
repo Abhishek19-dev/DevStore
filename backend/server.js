@@ -1,5 +1,8 @@
 const app = require("./app");
+const express = require('express');
 const cloudinary = require('cloudinary').v2
+const path = require('path')
+
 // const multer = require('multer');
 
 
@@ -13,17 +16,13 @@ process.on("uncaughtException",(err)=>{
 
 // const dotenv = require('dotenv')
 
-//config:-
-// dotenv.config({path:"backend/config/config.env"})
-
-// require('dotenv').config()
 
 //database connection
 const mongoose = require("mongoose");
 main().catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect("mongodb+srv://AbhishekPadiyar:ripperpubg1234@cluster0.dimd4wk.mongodb.net/ECommerceAp",{
+  await mongoose.connect("mongodb+srv://AbhishekPadiyar:ripperpubg1234@cluster0.dimd4wk.mongodb.net/DevStore",{
     useNewUrlParser: true,
   });
   console.log("database connected");
@@ -40,10 +39,16 @@ cloudinary.config({
   api_secret : CLOUDINARY_API_SECRET
 })
 
+// setup for deployment:-
+const __directoryName = path.resolve();
+
 const PORT = 9050;
 const server = app.listen(PORT, () => {
   console.log(`Server is working on http://localhost:${PORT}`);
 })
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static(path.join(__directoryName , "/frontend/build")))
+}
 
 
 
